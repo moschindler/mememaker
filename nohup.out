@@ -1,0 +1,8 @@
+rm: cannot remove ‘*bar.png’: No such file or directory
+rm: cannot remove ‘*.mp4’: No such file or directory
+  File "sexbot.py", line 49
+    if((message.content.length<50 and message.content.length>10 and len(message.split(" ")>0) and (not message.content[0]=="?"):
+                                                                                                                               ^
+SyntaxError: invalid syntax
+rm: cannot remove ‘*bar.png’: No such file or directory
+rm: cannot remove ‘*.mp4’: No such file or directory

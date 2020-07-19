@@ -16,11 +16,15 @@ import os
 import subprocess
 from getter import *
 from impact import *
+import asyncio
+import random
+
+nmes = 0
 
 #server id = 695865535954550866
 print("hi")
-token = "NzE4Njg0NjAxNjEwMDEwNzM0.XtsunA.nhXi3IPva-KkvKFeqHxYNS75w2Q"
-
+#token = "NzE4Njg0NjAxNjEwMDEwNzM0.XtsunA.nhXi3IPva-KkvKFeqHxYNS75w2Q"
+token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxSubA.4pg37kPcEjASBoqAsAS901XnT8Y"
 import discord #import all the necessary modules
 from discord import Game
 from discord.ext import commands
@@ -41,6 +45,39 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    global nmes
+    bob = False
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    if((len(message.content)<50 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
+        nmes += 1
+        print(nmes)
+        bob = True
+    if ((nmes % 100 == 50) and bob):
+        infl = 0
+        while bob:
+            infl += 1
+            if(infl>50):
+                break
+            try: 
+                ranlink = ""
+                for i in range(5):
+                    rn = random.randint(0,61)
+                    ranlink += alphabet[rn:rn+1]
+                print(ranlink)
+                response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
+                print("gothere")
+                print("https://i.imgur.com/{}.jpg".format(ranlink))
+                print("bump")
+                img = Image.open(BytesIO(response.content))
+                img.save("meme.jpg")
+                s = cutatmid(message.content)
+                print((s[0],s[1]))
+                memepathsetup("meme.jpg",s[0],s[1])
+                bob = False
+                await message.channel.send(file=File("./meme.jpg"))
+            except:
+                pass
+            
     #print(message)
     await bot.process_commands(message)
     ch = bot.get_channel(714987181818642473)
@@ -59,10 +96,6 @@ async def test(ctx):
     print("asdf")
     msg = ctx.message.content
     await ctx.message.channel.send(msg)
-
-async def help(ctx):
-    await ctx.message.channel.send("try ?f help or ?m help")
-    await ctx.message.channel.send("videos take like 30 seconds to make. it's so fucked up, man")
 
 @bot.command(pass_context=True)
 async def m(ctx):

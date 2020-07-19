@@ -225,6 +225,8 @@ def concat_v(im1,im2):  #put images on top of one another. like, physically, not
     return dst
 
 def addformatpic(f,u):     #format name, url
+    if(re.search("<",u)):
+        u = u[1:-1]
     with open('picformats.txt','r') as reader:
         for line in reader.readlines():
             if(line==f):
@@ -617,7 +619,25 @@ def parsebpicCommand(s):
             idd = getvidofformat(idd,"picformats.txt")
         return [idd,ast.literal_eval(s[l:])]
         
-
+def cutatmid(s):
+    n = len(s)
+    n = int(n/2)
+    z = -1
+    z2 = -1
+    for i in range(n,-1,-1):
+        if(s[i:i+1]==" "):
+            z = i
+            break
+    for i in range(n,2*n+2):
+        if(s[i:i+1]==" "):
+            z2 = i
+            break
+    cut = n
+    if(abs(z-n)<abs(z2-n)):
+        cut = z
+    else:
+        cut = z2
+    return ([s[0:cut]],[s[cut+1:len(s)]])
 
 
 

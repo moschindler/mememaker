@@ -53,7 +53,7 @@ class impact:
     
     def bottomwritelines(self):
         mid = self.w/2
-        totalheight = 2.5*self.pt+self.hg*(len(self.text)-1)+1.25*self.fz
+        totalheight = 2.5*self.pt+self.hg*(len(self.text)-1)+1.1*self.fz
         start = (mid-self.war[0]/2,self.h-totalheight)
         
         for i in range(len(self.war)):
@@ -124,8 +124,16 @@ def vidtextsetup(yid,ss,ee,tt,bt):
 #imgpaths textar top .out(fn)
 
 def memesetup(url,tt,bt):
+    if(re.search("<",url)):
+        url = url[1:-1]
     idl("meme.jpg",url)
     s = impact("meme.jpg",tt)
+    s.out("meme.jpg")
+    s = impact("meme.jpg",bt,top="bottom")
+    s.out("meme.jpg")
+
+def memepathsetup(path,tt,bt):
+    s = impact(path,tt)
     s.out("meme.jpg")
     s = impact("meme.jpg",bt,top="bottom")
     s.out("meme.jpg")
