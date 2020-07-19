@@ -56,7 +56,7 @@ def vidmemesetup(yid,s,e,textar):
     bob = whitebar(w,ast.literal_eval(textar)) #width, text
     bob.out(yid+"wb.png")
     os.system("ffmpeg -y -hide_banner -loglevel panic -loop 1 -i "+yid+"wb.png"+" -c:v libx264 -t "+str(int(e)-int(s))+" -pix_fmt yuv420p "+yid+"wb.mp4")
-    #print("SDHFLSDHGKLSHDGLKHDSGHKLHSDKGKLSDHGKLSDHGLKSDHGLHKSDGLHSDDKLGLHDSGDGSGDSGDSDSDSDGSDGDS")
+    
     clip.close()
     
 

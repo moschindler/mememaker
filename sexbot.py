@@ -15,6 +15,7 @@ from util import *
 import os
 import subprocess
 from getter import *
+from impact import *
 
 #server id = 695865535954550866
 print("hi")
@@ -66,23 +67,68 @@ async def help(ctx):
 @bot.command(pass_context=True)
 async def m(ctx):
     print("-------------------------------------------------------------------")
-    delblank('picformats.txt')
-    delblank('vidformats.txt')
-    delblank('onpicformats.txt')
+    #delblank('picformats.txt')
+    #delblank('vidformats.txt')
+    #delblank('onpicformats.txt')
     s = ctx.message.content
     z = parsePicCommand(s)
     if(s=="?m help" or s=="?meme help"):
         await ctx.message.channel.send("Type ?m shelp for quick help.")
         await ctx.message.channel.send(file=File("./help.txt"))
     elif(s=="?m shelp"):
-        await ctx.message.channel.send("?m pic [pic/format] [text]")
-        await ctx.message.channel.send("?m video [url/code/format] [start] [end] [text]")
+        await ctx.message.channel.send("?m [pic, bpic] [pic/format] [text]")
+        await ctx.message.channel.send("?m [video, bvid] [url/code/format] [start] [end] [text]")
         await ctx.message.channel.send("?m gridlines [pic url]")
         await ctx.message.channel.send("?combine [youtube id] [start] [end] [yt id 2] [s2] [e2] ...")
         await ctx.message.channel.send("?m onpic url [font/font list] [color/color list] [size/size list] [location list] [text list list]")
+        await ctx.message.channel.send("?m bt url [top text array] [bottom text array]")
+        await ctx.message.channel.send("?m btvid [youtube id] start end [top text array] [bottom text array]")
     elif(s.split(" ")[1]=="gridlines"):
         gridlines(s.split(" ")[2])
         await ctx.message.channel.send(file=File("./gridlines.jpg"))
+    elif(s.split(" ")[1]=="bt" or s.split(" ")[1]=="btpic"):
+        z = s.split(" ")
+        try:
+            tarloc = contigb(z) #finds continguous bracket section
+            tt = z[tarloc[0]:tarloc[1]+1]
+            tt = ast.literal_eval(concats(tt))
+            z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
+            tarloc = contigb(z) #finds continguous bracket section
+            bt = z[tarloc[0]:tarloc[1]+1]
+            bt = ast.literal_eval(concats(bt))
+            z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
+            bob = True
+        except:
+            await ctx.message.channel.send("Something's wrong with your text arrays, amigo.")
+        if(bob):
+            url = z[2]
+            tt,bt = bt,tt
+            memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
+            await ctx.message.channel.send(file=File("./meme.jpg"))
+    elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):
+        z = s.split(" ")
+        bob = False
+        try:
+            tarloc = contigb(z) #finds continguous bracket section
+            tt = z[tarloc[0]:tarloc[1]+1]
+            tt = ast.literal_eval(concats(tt))
+            z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
+            tarloc = contigb(z) #finds continguous bracket section
+            bt = z[tarloc[0]:tarloc[1]+1]
+            bt = ast.literal_eval(concats(bt))
+            z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
+            bob = True
+        except:
+            await ctx.message.channel.send("Something's wrong with your text arrays, amigo.")
+        if(bob):
+            #?m btvid yid 5 10 tt bt
+            yid = z[2]
+            s = z[3]
+            e = z[4]
+            tt,bt = bt,tt
+            vidtextsetup(getvidofformat(yid,"vidformats.txt"),int(s),int(e),tt,bt)
+            await ctx.message.channel.send(file=File("./meme.mp4"))
+            os.system("rm -f ./meme.mp4")
     elif(s.split(" ")[1]=="onpic"):
         print("Hi")
         #TIME FOR THE FUCKING NIGHTMARE
@@ -164,7 +210,6 @@ async def m(ctx):
             print((z[0],z[1],z[2],z[3]))
             vidmemesetup(z[0],z[1],z[2],re.sub("'","~",z[3]))
             vidmememake(z[0])
-
             await ctx.message.channel.send(file=File("./meme.mp4"))
     elif(z=="bpic"):    #MAKING A PICTURE MEME BUT THE PICTURE IS ON THE BOTTOM
         z = parsebpicCommand(s)

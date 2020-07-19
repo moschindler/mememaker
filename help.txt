@@ -58,7 +58,16 @@ GRIDLINES:
 This is to help you with ONPIC. Shows gridlines at each 10% of width and height as well as what font sizes 1-0.1 look like.
 SYNTAX:
 ?m gridlines [pic url]
-
+-------------------------------
+BOTTOM TEXT PIC:
+Lets you put impact font text with borders on an image like you see in old and/or ironic memes.
+SYNTAX:
+?m [bt or btpic] [pic url or format] [array of text which will be the lines of top text] [array of text, bottom text]
+-------------------------------
+BOTTOM TEXT VIDEO:
+Like bottom text pic, but with a video!!!
+SYNTAX:
+?m [btvid or btvideo] [youtube id or format] [start time in s] [end time in s] [array of top text] [array of bottom text]
 
 -------------------------------
 combine uses a separate command 'cause it's a little bitch.
