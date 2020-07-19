@@ -1,0 +1,74 @@
+WELCOME to the help document. I'll try to keep this brief.
+The first thing that I'll say is that you can escape links with <>.
+So if you're tired of that Akshay nude preview appearing when you do ?m pic imgur.com/nude ["penis"],
+you can do ?m pic <imgur.com/nude> ["penis"] and it'll fix that. Same with videos.
+
+
+PICTURE MEMES, that is, a white bar with text over a picture
+SYNTAXES:
+?m pic [link to picture] [text array]
+?m pic [format name] [text array]
+Note that the code automatically does linebreaks if the text is so long, so you only need a new
+entry in the text array when you need a new line.
+EXAMPLE: ?m pic cereal ["when you spit out", "cereal"]
+?m pic https://i.imgflip.com/ual56.jpg ["me: spits out cereal","nobody: woow"]
+-----------------------------
+VIDEO MEMES, that is, a white bar with text over a video.
+SYNTAXES:
+?m video [youtube id or youtube link] [start second] [end second] [text array]
+?m video [format name] [start second] [end second] [text array]
+The start second and end second are the start and end of the youtube video clip.
+EXAMPLE:
+?m video dQw4w9WgXcQ 5 10 ["sex"]
+?m video kakyoin 37 53 ["when akshay realizes people eat meat"]
+-----------------------------
+BPIC, BVID:
+bpic and bvid are the same as pic and vid/video, except the text is now below the meme
+EXAMPLE:
+?m bpic cereal ["wooo now the text is below"]
+-----------------------------
+ONPIC:
+Oh my god. This one was such a pain in the ass.
+It's highly recommended to use ?m gridlines [pic url] first to help you know where shit goes.
+Now you can put text on pictures! Like you see in most memes today.
+SYNTAX:
+?m onpic [pic url] [font/font array] [color/color array] [size/size array] [location array] [array of array of text]
+?m onpic [format] [array of text arrays]
+
+Actually, the six inputs in the first one can be sent in ANY ORDER!
+You can remember this by: "Please fuck cock sucker Louis Armstrong."
+Or, um, "Please fuck/suck cock, Louisia!" ~Akhil
+Got it? Picture font size color location array of text. Actually, maybe text instead of array would've been better: Please fuck/suck this cock, Louisia? But then we don't know who's saying it.
+Hmmm. Paul, Schindler, Louis, Tamil, jCock, Fuck eric yin?
+
+EXAMPLE:
+?m onpic blah.com/pic ["helvetica","arial"] red 0.5 [(20,50),(60,50)] [["me"],["me when A*","enters the room"]]
+MORE EXPLANATION:
+If only one input is given for any of font, color, size, it's assumed that's the input for ~all~ of them.
+Each location corresponds to where a block of text goes. A location is given by the % x from the left and % y from the top.
+So halfway across and all the way down is (50,100). Bottom right corner is (100,100).
+Each sub-array of text is put at one location, and each thing in that array gets its own line.
+With locations [(20,50),(60,80)] and text array array [["me"],["me when A*","enters the room"]],
+"me" is centered at 20% across 50% down, and the two lines "me when A*/enters the room" are centered at 60% across 80% down.
+HOW DO I KNOW WHERE GOOD PERCENTS ARE? OR FONT SIZES?
+use ?m gridlines [pic url]
+
+-------------------------------
+GRIDLINES:
+This is to help you with ONPIC. Shows gridlines at each 10% of width and height as well as what font sizes 1-0.1 look like.
+SYNTAX:
+?m gridlines [pic url]
+
+
+-------------------------------
+combine uses a separate command 'cause it's a little bitch.
+COMBINE: 
+Literally just combine n video clips, possibly the same.
+SYNTAX:
+?combine [vid1 id] [start time 1] [end time 1] [vid2 id] ...
+EXAMPLE:
+?combine VRxGdlNVgCY 1 7.2 vlkhgr9pZ-A 37 50
+?combine 3Y9fH-wexYc 3 8 r62U0dciMQM 5 10 3Y9fH-wexYc 60 68 r62U0dciMQM 15 20 3Y9fH-wexYc 101 105 r62U0dciMQM 25 30 3Y9fH-wexYc 172 180
+
+
+
