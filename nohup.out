@@ -6,3 +6,48 @@ rm: cannot remove ‘*.mp4’: No such file or directory
 SyntaxError: invalid syntax
 rm: cannot remove ‘*bar.png’: No such file or directory
 rm: cannot remove ‘*.mp4’: No such file or directory
+hi
+Logged in as:
+SEXBOT
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/discord/gateway.py", line 470, in poll_event
+    msg = await self.recv()
+  File "/usr/local/lib64/python3.6/site-packages/websockets/protocol.py", line 509, in recv
+    await self.ensure_open()
+  File "/usr/local/lib64/python3.6/site-packages/websockets/protocol.py", line 812, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: code = 4004 (private use), reason = Authentication failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "sexbot.py", line 430, in <module>
+    bot.run(token)
+  File "/usr/local/lib/python3.6/site-packages/discord/client.py", line 640, in run
+    return future.result()
+  File "/usr/local/lib/python3.6/site-packages/discord/client.py", line 621, in runner
+    await self.start(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/discord/client.py", line 585, in start
+    await self.connect(reconnect=reconnect)
+  File "/usr/local/lib/python3.6/site-packages/discord/client.py", line 499, in connect
+    await self._connect()
+  File "/usr/local/lib/python3.6/site-packages/discord/client.py", line 463, in _connect
+    await self.ws.poll_event()
+  File "/usr/local/lib/python3.6/site-packages/discord/gateway.py", line 478, in poll_event
+    raise ConnectionClosed(exc, shard_id=self.shard_id) from exc
+discord.errors.ConnectionClosed: code = 4004 (private use), reason = Authentication failed.

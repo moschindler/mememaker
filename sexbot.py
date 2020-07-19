@@ -22,12 +22,8 @@ import random
 nmes = 0
 
 #server id = 695865535954550866
-print("hi")
-#token = "NzE4Njg0NjAxNjEwMDEwNzM0.XtsunA.nhXi3IPva-KkvKFeqHxYNS75w2Q"
-token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxSubA.4pg37kPcEjASBoqAsAS901XnT8Y"
-import discord #import all the necessary modules
-from discord import Game
-from discord.ext import commands
+token = os.popen("cat token.txt | head -1").read().strip()
+print(token)
 
 bot = commands.Bot(command_prefix='?') #define command decorator
 
