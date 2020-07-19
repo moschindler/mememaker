@@ -389,7 +389,8 @@ def concats(ar):    #with spaces this time
     for i in ar:
         ans += i
         ans += " "
-    return ans
+    return ans.strip()
+
 #picurl, font, color, size, loc, text
 #DISTINGUISHING: isUrl, ar of string, also string...fuck., ar of tuple, DONE
 def parseOnPicCommand(s):

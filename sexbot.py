@@ -100,6 +100,9 @@ async def m(ctx):
     #delblank('vidformats.txt')
     #delblank('onpicformats.txt')
     s = ctx.message.content
+    opts = [i for i in s.split(" ") if i[0]=="-"]
+    s = concats([i for i in s.split(" ") if (not i[0]=="-")])
+    print(s)
     z = parsePicCommand(s)
     if(s=="?m help" or s=="?meme help"):
         await ctx.message.channel.send("Type ?m shelp for quick help.")
@@ -156,8 +159,13 @@ async def m(ctx):
             e = z[4]
             tt,bt = bt,tt
             vidtextsetup(getvidofformat(yid,"vidformats.txt"),int(s),int(e),tt,bt)
-            await ctx.message.channel.send(file=File("./meme.mp4"))
+            if("-gif" in opts):
+                os.system("ffmpeg -i meme.mp4 meme.gif")
+                await ctx.message.channel.send(file=File("./meme.gif"))
+            else:
+                await ctx.message.channel.send(file=File("./meme.mp4"))
             os.system("rm -f ./meme.mp4")
+            os.system("rm -f ./meme.gif")
     elif(s.split(" ")[1]=="onpic"):
         print("Hi")
         #TIME FOR THE FUCKING NIGHTMARE
@@ -239,7 +247,13 @@ async def m(ctx):
             print((z[0],z[1],z[2],z[3]))
             vidmemesetup(z[0],z[1],z[2],re.sub("'","~",z[3]))
             vidmememake(z[0])
-            await ctx.message.channel.send(file=File("./meme.mp4"))
+            if("-gif" in opts):
+                os.system("ffmpeg -i meme.mp4 meme.gif")
+                await ctx.message.channel.send(file=File("./meme.gif"))
+            else:
+                await ctx.message.channel.send(file=File("./meme.mp4"))
+            os.system("rm -f ./meme.mp4")
+            os.system("rm -f ./meme.gif")
     elif(z=="bpic"):    #MAKING A PICTURE MEME BUT THE PICTURE IS ON THE BOTTOM
         z = parsebpicCommand(s)
         if(isinstance(z,list)):
@@ -274,7 +288,13 @@ async def m(ctx):
             print((z[0],z[1],z[2],z[3]))
             vidmemesetup(z[0],z[1],z[2],re.sub("'","~",z[3]))
             bvidmememake(z[0])
-            await ctx.message.channel.send(file=File("./meme.mp4"))
+            if("-gif" in opts):
+                os.system("ffmpeg -i meme.mp4 meme.gif")
+                await ctx.message.channel.send(file=File("./meme.gif"))
+            else:
+                await ctx.message.channel.send(file=File("./meme.mp4"))
+            os.system("rm -f ./meme.mp4")
+            os.system("rm -f ./meme.gif")
     else:
         await ctx.message.channel.send("?m help...the problem was in your first argument. We only take vid,video,pic,picture,bvid,bvideo,bpic,bpicture")
 
@@ -346,6 +366,8 @@ async def f(ctx):       #add format
 @bot.command(pass_context=True)
 async def combine(ctx):
     s = ctx.message.content
+    opts = [i for i in s.split(" ") if i[0]=="-"]
+    s = concats([i for i in s.split(" ") if (not i[0]=="-")])
     s = s.split(" ")
     print(s)
     print(s[1])
@@ -355,7 +377,7 @@ async def combine(ctx):
     elif(s[1]=="help"):
         await ctx.message.channel.send("USAGE: ?combine [id 1] [start] [end] [id 2] [start] [end]")
         await ctx.message.channel.send("I'll get it working with formats later but I'm far too lazy for that now")
-    elif(len(s)>7):
+    elif(len(s)>=7):
         bob = True
         s = s[1:]
         for i in range(int(len(s[1:])/3)):
@@ -373,8 +395,13 @@ async def combine(ctx):
             await ctx.message.channel.send("Gotcha. This might take a bit...")
             ycombinemany(*tuple(s))
             await ctx.message.channel.send("Done.")
-            await ctx.message.channel.send(file=File("./meme.mp4"))
-            os.system("rm -f meme.mp4")
+            if("-gif" in opts):
+                os.system("ffmpeg -i meme.mp4 meme.gif")
+                await ctx.message.channel.send(file=File("./meme.gif"))
+            else:
+                await ctx.message.channel.send(file=File("./meme.mp4"))
+            os.system("rm -f ./meme.mp4")
+            os.system("rm -f ./meme.gif")
     elif(len(s)==7):
         id1 = getvidofformat(s[1],"vidformats.txt")
         id2 = getvidofformat(s[4],"vidformats.txt")
@@ -391,7 +418,14 @@ async def combine(ctx):
             getclip(id1,s[2],s[3])
             getclip(id2,s[5],s[6])
             ycombine(id1,id2)
-            await ctx.message.channel.send(file=File("./"+id1+id2+".mp4"))
+            if("-gif" in opts):
+                os.system("ffmpeg -i {}{}.mp4 meme.gif".format(id1,id2))
+                await ctx.message.channel.send(file=File("./meme.gif"))
+            else:
+                await ctx.message.channel.send(file=File("./{}{}.mp4".format(id1,id2)))
+            os.system("rm -f ./{}{}.mp4".format(id1,id2))
+            os.system("rm -f ./meme.gif")
+            #await ctx.message.channel.send(file=File("./"+id1+id2+".mp4"))
 
             print("Combined vid should have sent")
             #os.system("rm -f "+id1+"*")
