@@ -44,11 +44,12 @@ async def on_message(message):
     global nmes
     bob = False
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    if((len(message.content)<50 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
+    if((len(message.content)<70 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
         nmes += 1
-        print(nmes)
+        if(nmes%10==0):
+            print(nmes)
         bob = True
-    if ((nmes % 100 == 50) and bob):
+    if ((nmes % 100 == 30) and bob):
         infl = 0
         while bob:
             infl += 1
@@ -118,7 +119,7 @@ async def m(ctx):
     elif(s.split(" ")[1]=="gridlines"):
         gridlines(s.split(" ")[2])
         await ctx.message.channel.send(file=File("./gridlines.jpg"))
-    elif(s.split(" ")[1]=="bt" or s.split(" ")[1]=="btpic"):
+    elif(s.split(" ")[1]=="bt" or s.split(" ")[1]=="btpic"):                #BTPIC!!!!!!!!!!!!!!!!!
         z = s.split(" ")
         try:
             tarloc = contigb(z) #finds continguous bracket section
@@ -137,7 +138,7 @@ async def m(ctx):
             tt,bt = bt,tt
             memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
             await ctx.message.channel.send(file=File("./meme.jpg"))
-    elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):
+    elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):           #BTVID
         z = s.split(" ")
         bob = False
         try:
@@ -166,7 +167,7 @@ async def m(ctx):
                 await ctx.message.channel.send(file=File("./meme.mp4"))
             os.system("rm -f ./meme.mp4")
             os.system("rm -f ./meme.gif")
-    elif(s.split(" ")[1]=="onpic"):
+    elif(s.split(" ")[1]=="onpic"):                                         #ONPIC
         print("Hi")
         #TIME FOR THE FUCKING NIGHTMARE
         z = s.split(" ")
@@ -179,14 +180,16 @@ async def m(ctx):
         try:
             tarloc = contigb(z)
             print(tarloc)
+            print("!!!!!!!!!!!!!!!!!")
             sizear = z[tarloc[0]:tarloc[1]+1]
             sizear = ast.literal_eval(concats(sizear))
             z = z[0:tarloc[0]]+z[tarloc[1]+1:]
         except:
             pass
-
+        print("AHHHHHH MADE IT PAST THAT")
         if(len(z)==3):
-            tup = os.popen("grep -A1 '{}' onpicformats.txt | grep -v {}".format(z[2],z[2])).read()
+            tup = os.popen("grep -A1 '{}' onpicformats.txt | grep -v {} | head -1".format(z[2],z[2])).read()
+            print(tup)
             #tup = tuple(tup)
             #print("---------------------")
             tup = ast.literal_eval(tup)

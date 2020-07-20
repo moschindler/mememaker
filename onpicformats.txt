@@ -4,6 +4,3 @@ brain3
 ('https://i.imgflip.com/2n589r.jpg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.5', '0.5', '0.5'], [(26, 17), (26, 50), (26, 83)])
 drake
 ('https://i.imgflip.com/2ju3gf.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(75, 25), (75, 75)])
-brain2
-brain2
-brain2

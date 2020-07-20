@@ -29,7 +29,7 @@ def tsums(*args):
     return ans
 
 class bar: #VERY DIFFERENT FROM TRANSPARENT BAR! THE DIFFERENCE COMES FROM CENTERING TEXT
-    def __init__(self,w,mtr,font="fonts/Helvetica.ttf",angle=0,boxcoords=[],centered=False):    #meme text 'rray
+    def __init__(self,w,mtr,font="fonts/helvetica.ttf",angle=0,boxcoords=[],centered=False):    #meme text 'rray
         self.tar = mtr #text of white bar
         self.tar = [re.sub("~","'",d) for d in self.tar]
         self.w = w      #image width (not the white bar...ok i guess it is the white bar :/)
@@ -96,6 +96,7 @@ class bar: #VERY DIFFERENT FROM TRANSPARENT BAR! THE DIFFERENCE COMES FROM CENTE
     
     def splatter(self):
         img = Image.open("white.png")
+        print((self.font,self.fz))
         self.font = ImageFont.truetype(self.font, self.fz)
         img = img.resize((self.w,1000))
         draw = ImageDraw.Draw(img)
