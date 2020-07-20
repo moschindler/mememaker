@@ -1,4 +1,5 @@
 import PIL
+import random
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
@@ -358,6 +359,7 @@ def delblank(fn):
 def getrandomimgurmeme(s):
     infl = 0
     bob = True
+    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     while bob:
         infl += 1
         if(infl>50):
@@ -381,22 +383,22 @@ def getrandomimgurmeme(s):
 def getrandomimgurlink():
     infl = 0
     bob = True
-
+    ranlink = ""
+    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     while bob:
-        infl += 1
         if(infl>50):
             break
         try: 
-            ranklink = ""
-            for i in range(5)
+            ranlink = ""
+            for i in range(5):
                 rn = random.randint(0,61)
                 ranlink += alphabet[rn:rn+1]
-            response = requests.get("https://i.imgur.com{}.jpg".format(ranlink))
+            response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
             img = Image.open(BytesIO(response.content))
             bob = False
         except:
             pass
-    return ranlink
+    return "https://i.imgur.com/{}.jpg".format(ranlink)
 
 
 
@@ -705,4 +707,5 @@ if __name__ == "__main__":
     draw.text((0,0), "blah blah blah", (128,128,128))
     img.show()
     '''
+    print(getrandomimgurlink())
     pass
