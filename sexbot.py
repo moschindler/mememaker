@@ -49,31 +49,9 @@ async def on_message(message):
         if(nmes%10==0):
             print(nmes)
         bob = True
-    if ((nmes % 100 == 30) and bob):
-        infl = 0
-        while bob:
-            infl += 1
-            if(infl>50):
-                break
-            try: 
-                ranlink = ""
-                for i in range(5):
-                    rn = random.randint(0,61)
-                    ranlink += alphabet[rn:rn+1]
-                print(ranlink)
-                response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
-                print("gothere")
-                print("https://i.imgur.com/{}.jpg".format(ranlink))
-                print("bump")
-                img = Image.open(BytesIO(response.content))
-                img.save("meme.jpg")
-                s = cutatmid(message.content)
-                print((s[0],s[1]))
-                memepathsetup("meme.jpg",s[0],s[1])
-                bob = False
-                await message.channel.send(file=File("./meme.jpg"))
-            except:
-                pass
+    if ((nmes % 75 == 30) and bob):
+        getrandomimgurmeme(message.content)
+        await message.channel.send(file=File("./meme.jpg"))
             
     #print(message)
     await bot.process_commands(message)
@@ -119,7 +97,7 @@ async def m(ctx):
     elif(s.split(" ")[1]=="gridlines"):
         gridlines(s.split(" ")[2])
         await ctx.message.channel.send(file=File("./gridlines.jpg"))
-    elif(s.split(" ")[1]=="bt" or s.split(" ")[1]=="btpic"):                #BTPIC!!!!!!!!!!!!!!!!!
+    elif(s.split(" ")[1]=="bt" or s.split(" ")[1]=="btpic"):                #BTPIC
         z = s.split(" ")
         try:
             tarloc = contigb(z) #finds continguous bracket section
@@ -136,7 +114,11 @@ async def m(ctx):
         if(bob):
             url = z[2]
             tt,bt = bt,tt
-            memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
+            if(url=="random"):
+                url = getrandomimgurlink()
+                memesetup(url,tt,bt)
+            else:
+                memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
             await ctx.message.channel.send(file=File("./meme.jpg"))
     elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):           #BTVID
         z = s.split(" ")
@@ -167,7 +149,7 @@ async def m(ctx):
                 await ctx.message.channel.send(file=File("./meme.mp4"))
             os.system("rm -f ./meme.mp4")
             os.system("rm -f ./meme.gif")
-    elif(s.split(" ")[1]=="onpic"):                                         #ONPIC
+    elif(s.split(" ")[1]=="onpic"):                                             #ONPIC
         print("Hi")
         #TIME FOR THE FUCKING NIGHTMARE
         z = s.split(" ")
@@ -187,7 +169,7 @@ async def m(ctx):
         except:
             pass
         print("AHHHHHH MADE IT PAST THAT")
-        if(len(z)==3):
+        if(len(z)==3):                                                          #STILL ONPIC
             tup = os.popen("grep -A1 '{}' onpicformats.txt | grep -v {} | head -1".format(z[2],z[2])).read()
             print(tup)
             #tup = tuple(tup)
@@ -220,7 +202,7 @@ async def m(ctx):
                 
                 await ctx.message.channel.send("Type ?yes <formatname> to save this as a format (so you'd only need the text next time)")
                 await ctx.message.channel.send(file=File("./meme.jpg"))
-    elif(isinstance(z,list)):     #MAKING A PICTURE MEME
+    elif(isinstance(z,list)):     #MAKING A PICTURE MEME                        #PICTURE
         await ctx.message.channel.send("acknowledged")
         makememepic(z[0],z[1]).save("meme.jpg")
         await ctx.message.channel.send(file=File("./meme.jpg"))
@@ -230,7 +212,7 @@ async def m(ctx):
         await ctx.message.channel.send('Your text was in the wrong format. Try "?m help" perhaps.')
     elif(z=="badlength"):
         await ctx.message.channel.send("bruh you need some help. ?m help")
-    elif(z=="vid"):     #MAKING A VIDEO MEME
+    elif(z=="vid"):     #MAKING A VIDEO MEME                                    #VIDEO
         z = parseVidCommand(s)
         if(z=="bpic"):
             pass
@@ -244,7 +226,6 @@ async def m(ctx):
             await ctx.message.channel.send("The format doesn't exist or maybe you entered a crappy url. Try harder or ?m help.")
         if(isinstance(z,list)):
             await ctx.message.channel.send("cool, gimme a sec.")
-            #process = subprocess.check_call("./getter.sh %s %s %s %s" % (str(z[0]), str(z[1]), str(z[2]), str(z[3])),shell=True)
             print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             z[3] = re.sub("'","~",z[3])
             print((z[0],z[1],z[2],z[3]))
@@ -257,7 +238,7 @@ async def m(ctx):
                 await ctx.message.channel.send(file=File("./meme.mp4"))
             os.system("rm -f ./meme.mp4")
             os.system("rm -f ./meme.gif")
-    elif(z=="bpic"):    #MAKING A PICTURE MEME BUT THE PICTURE IS ON THE BOTTOM
+    elif(z=="bpic"):    #MAKING A PICTURE MEME BUT THE PICTURE IS ON THE BOTTOM         #BOTTOM PIC
         z = parsebpicCommand(s)
         if(isinstance(z,list)):
             await ctx.message.channel.send("acknowledged")
@@ -273,7 +254,7 @@ async def m(ctx):
                 await ctx.message.channel.send("Your text was in the wrong format. Try ?m help.")
         elif(z=="badformat"):
                 await ctx.message.channel.send("The format doesn't exist or maybe you entered a crappy url. Try harder or ?m help.")
-    elif(z=="bvid"):     #MAKING A VIDEO MEME
+    elif(z=="bvid"):     #MAKING A VIDEO MEME                           #BOTTOM VIDEO
         z = parsebvidCommand(s)
         if(z=="bad"):
             await ctx.message.channel.send("Somehow you fucked up the numbers LOL. its ltiealy just seconds bro")

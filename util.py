@@ -355,6 +355,51 @@ def delblank(fn):
             if not line.isspace():
                 file.write(line)
 
+def getrandomimgurmeme(s):
+    infl = 0
+    bob = True
+    while bob:
+        infl += 1
+        if(infl>50):
+            break
+        try: 
+            ranlink = ""
+            for i in range(5):
+                rn = random.randint(0,61)
+                ranlink += alphabet[rn:rn+1]
+            print(ranlink)
+            response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
+            img = Image.open(BytesIO(response.content))
+            img.save("meme.jpg")
+            s = cutatmid(s)
+            print((s[0],s[1]))
+            memepathsetup("meme.jpg",s[0],s[1])
+            bob = False
+        except:
+            pass
+
+def getrandomimgurlink():
+    infl = 0
+    bob = True
+
+    while bob:
+        infl += 1
+        if(infl>50):
+            break
+        try: 
+            ranklink = ""
+            for i in range(5)
+                rn = random.randint(0,61)
+                ranlink += alphabet[rn:rn+1]
+            response = requests.get("https://i.imgur.com{}.jpg".format(ranlink))
+            img = Image.open(BytesIO(response.content))
+            bob = False
+        except:
+            pass
+    return ranlink
+
+
+
 ############################
 #DISCORD COMMAND PARSING
 
