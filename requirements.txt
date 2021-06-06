@@ -4,6 +4,4 @@ pytube
 moviepy
 discord
 pandas
-logging
-subprocess
 
