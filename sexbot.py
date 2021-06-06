@@ -37,21 +37,53 @@ async def on_ready():
     print(bot.user.name)
     os.system("rm *bar.png")
     os.system("rm *.mp4")
-    #await bot.change_presence(game=Game(name="in rain ¬ !jhelp"))
+    #await bot.user.setStatus('playing with fire trucks')
+    #await bot.change_presence(game=Game(name="with fire trucks"))
 
+    
+def check(reaction,user):
+    return str(reaction.emoji) == ':skull:' and reaction.message == msg
+
+#reaction, user = await bot.wait_for('reaction_add',check=check)
+@bot.event
+async def on_reaction_add(reaction,user):
+    print(str(reaction.emoji))
+    if(str(reaction.emoji)=="💀" and (reaction.message.author.id==bot.user.id)):
+        print("DSHFISD")
+        msg = reaction.message
+        await msg.delete()
+    print("Hi")
+
+#print("hi")
+#await msg.delete()
+
+#msg = ""
 @bot.event
 async def on_message(message):
     global nmes
     bob = False
+    if("'s ok" in message.content or "is ok" in message.content or "was ok" in message.content or "was OK" in message.content or "is OK" in message.content):
+        await message.channel.send("Just 'ok'?")
+    if("-del" in message.content):
+        if(message.content[0]=="?"):
+            await message.delete()
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     if((len(message.content)<70 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
         nmes += 1
-        if(nmes%10==0):
-            print(nmes)
+        #print("HEY i just met you")
+        #if(nmes%10==0):
+        #    print(nmes)
         bob = True
-    if ((nmes % 75 == 30) and bob):
-        getrandomimgurmeme(message.content)
-        await message.channel.send(file=File("./meme.jpg"))
+    if ((nmes % 350 == 50) and bob):
+        print("we boutta send a random meme o_o")
+        url = getrandomimgurlink()
+        s = cutatmid(message.content)
+        print(url)
+        memesetup(url,s[0],s[1])
+        embed = discord.Embed(title=url)
+        embed.set_image(url="attachment://meme.jpg")
+        #getrandomimgurmeme(message.content)
+        await message.channel.send(file=File("./meme.jpg"),embed=embed)
             
     #print(message)
     await bot.process_commands(message)
@@ -81,11 +113,23 @@ async def m(ctx):
     s = ctx.message.content
     opts = [i for i in s.split(" ") if i[0]=="-"]
     s = concats([i for i in s.split(" ") if (not i[0]=="-")])
+    print("HI")
+    if("-del" in opts):
+        print("hear")
+        #await ctx.bot.delete_message(message)
+        #await bot.delete_message(ctx.message)
     print(s)
     z = parsePicCommand(s)
-    if(s=="?m help" or s=="?meme help"):
+    nextguy = s.split(" ")[1]
+    if(nextguy in ["btvid","btvideo","vid","video","bvid","bvideo"]):
+        await ctx.message.channel.send("yeah, so anything involving videos/gifs is currently offline until i can obtain something to run this on that doesn't run ffmpeg at the speed of a potato. Sorry!")
+    elif(s=="?m help" or s=="?meme help"):
+        await ctx.message.channel.send("Type ?m onpic shelp for onpic specific help")
         await ctx.message.channel.send("Type ?m shelp for quick help.")
         await ctx.message.channel.send(file=File("./help.txt"))
+    elif(s=="?m onpic help"):
+        await ctx.message.channel.send("List of formats: <https://imgur.com/a/tO6UjJV>")
+        await ctx.message.channel.send("Specific help and examples: <https://imgur.com/a/lzw8yWV>")
     elif(s=="?m shelp"):
         await ctx.message.channel.send("?m [pic, bpic] [pic/format] [text]")
         await ctx.message.channel.send("?m [video, bvid] [url/code/format] [start] [end] [text]")
@@ -116,10 +160,15 @@ async def m(ctx):
             tt,bt = bt,tt
             if(url=="random"):
                 url = getrandomimgurlink()
+                print(url)
                 memesetup(url,tt,bt)
+                embed = discord.Embed(title=url)
+                #file = discord.File("./meme.jpg")
+                embed.set_image(url="attachment://meme.jpg")
+                await ctx.message.channel.send(file=File("meme.jpg"),embed=embed)
             else:
                 memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
-            await ctx.message.channel.send(file=File("./meme.jpg"))
+                await ctx.message.channel.send(file=File("./meme.jpg"))
     elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):           #BTVID
         z = s.split(" ")
         bob = False
@@ -188,7 +237,7 @@ async def m(ctx):
             tup = parseOnPicCommand(s)
             print(tup)
             if not type(tup) is tuple:
-                await ctx.message.channel.send("There was something wrong with your "+tup)
+                await ctx.message.channel.send("There was something wrong with your "+str(tup))
             else:
                 alltextonpic(*tup)
                 os.system("rm -f temp.txt")
@@ -203,7 +252,7 @@ async def m(ctx):
                 await ctx.message.channel.send("Type ?yes <formatname> to save this as a format (so you'd only need the text next time)")
                 await ctx.message.channel.send(file=File("./meme.jpg"))
     elif(isinstance(z,list)):     #MAKING A PICTURE MEME                        #PICTURE
-        await ctx.message.channel.send("acknowledged")
+        #await ctx.message.channel.send("acknowledged")
         makememepic(z[0],z[1]).save("meme.jpg")
         await ctx.message.channel.send(file=File("./meme.jpg"))
     elif(z=="badformat"):
@@ -241,7 +290,8 @@ async def m(ctx):
     elif(z=="bpic"):    #MAKING A PICTURE MEME BUT THE PICTURE IS ON THE BOTTOM         #BOTTOM PIC
         z = parsebpicCommand(s)
         if(isinstance(z,list)):
-            await ctx.message.channel.send("acknowledged")
+            #await ctx.message.channel.send("acknowledged")
+            
             makememebpic(z[0],z[1]).save("meme.jpg")
             await ctx.message.channel.send(file=File("./meme.jpg"))
         elif(z=="bvid"):
@@ -324,11 +374,16 @@ async def f(ctx):       #add format
         await ctx.message.channel.send("USAGE: ?f [either 'pic' or 'video'] [format name] [url of pic]")
         await ctx.message.channel.send("Alternatively, '?f pic list' or '?f video list' lists all known pic/video formats and their links.")
     if(s=="?f pic list"):
-        await ctx.message.channel.send(allformats("picformats.txt"))
+        m = str(allformats("picformats.txt"))
+        await ctx.message.channel.send(m[:1900])
+        await ctx.message.channel.send(m[1900:])
     if(s=="?f video list"):
         await ctx.message.channel.send(allformats("vidformats.txt"))
-    if(s=="?f onpic list"):
-        await ctx.message.channel.send(allformats("onpicformats.txt"))
+    if(s=="?f onpic list"): 
+        await ctx.message.channel.send("List of formats: <https://imgur.com/a/tO6UjJV>")
+        await ctx.message.channel.send("Specific help and examples: <https://imgur.com/a/lzw8yWV>")
+        #await ctx.message.channel.send(allformats2("onpicformats.txt")[:1900])
+        #await ctx.message.channel.send(allformats2("onpicformats.txt")[1900:])
     else:
         s = s.split(" ")
         if(not len(s) == 4):
@@ -349,6 +404,8 @@ async def f(ctx):       #add format
 
 @bot.command(pass_context=True)
 async def combine(ctx):
+    await ctx.message.channel.send("yeah, so something something AWS is too slow to run ffmpeg on so video stuff doesn't work. Sorry!")
+    return 1
     s = ctx.message.content
     opts = [i for i in s.split(" ") if i[0]=="-"]
     s = concats([i for i in s.split(" ") if (not i[0]=="-")])
@@ -416,7 +473,16 @@ async def combine(ctx):
             #os.system("rm -f "+id2+"*")
     else:
         await ctx.message.channel.send("?combine help")
-            
+###########################################
+#gif on pic (paimon)
+#any pic can be one of t
+@bot.command(pass_context=True)
+async def gifpic(ctx,base,over,corner1,corner2):
+    s = ctx.message.content
+
+
+
+###########################################
 
 
 @bot.command(pass_context=True)
@@ -436,10 +502,18 @@ async def r(ctx):
 
 @bot.command(pass_context=True)
 async def kill(ctx):
-    exit()
+    s = ctx.message.content
+    if(not re.search("thanos penig",s)):
+        print("HIIIIIIIIIIIIIIIIIIIII")
+        await ctx.message.channel.send("whats the password")
+    elif(s == "?kill thanos penig"):
+        await ctx.message.channel.send("hahaha nice")
+        exit()
 
+@bot.command(pass_context=True)
+async def natural(ctx):
+    await ctx.message.channel.send("$natural in 5 hours send blah blah blah to #general")
 #KEY FOR FLOWALGO
-KEY = "863f942a072346d24c32"
 
 bot.run(token)
 

@@ -1,0 +1,60 @@
+brain2
+('https://i.imgflip.com/1qh5ww.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.6', '0.6'], [(24, 24), (24, 74)])
+brain3
+('https://i.imgflip.com/2n589r.jpg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.5', '0.5', '0.5'], [(26, 17), (26, 50), (26, 83)])
+drake
+('https://i.imgflip.com/2ju3gf.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(75, 25), (75, 75)])
+offering
+('https://i.kym-cdn.com/entries/icons/facebook/000/027/656/Screen_Shot_2018-11-15_at_1.16.04_PM.jpg', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 1.0], [(63, 90), (50, 66), (34, 35)])
+monster3
+('https://i.imgur.com/s9ubROl.jpg', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 0.75], [(73, 47), (64, 65), (33, 47)])
+pooh3
+('https://i.imgflip.com/2xcjbu.png', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.75', '0.75', '0.75'], [(72, 18), (72, 51.5), (72, 84.7)])
+pooh2
+('https://i.imgflip.com/2xaye3.png', ['helvetica', 'helvetica'], ['black', 'black'], ['1', '1'], [(70.5, 27), (70.5, 77)])
+shy
+('https://lh3.googleusercontent.com/-H69mZiAO71A/X0HqFGaCQQI/AAAAAAAAdwk/QDdSBnZcrE8aqZjJgFpLl35LAIiqsLeLACK8BGAsYHg/s0/2020-08-22.png', ['helvetica'], ['black'], ['0.50'], [(14.95, 85.95)])
+toes
+('https://media.discordapp.net/attachments/731314516490584156/751191319724163143/image0.jpg', ['helvetica', 'helvetica'], ['black', 'black'], [0.5, 0.75], [(12, 38), (75, 18)])
+medal
+('https://i.kym-cdn.com/photos/images/newsfeed/001/838/613/45e.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black', 'black'], [0.75, 0.5, 0.5, 0.5], [(16, 15), (72, 74), (59, 76), (87, 77)])
+handshake
+('https://i.imgur.com/JL39Zdc.png', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 0.75], [(32, 12), (68, 12), (48, 80)])
+carstare
+('https://i.kym-cdn.com/photos/images/newsfeed/001/882/382/e8b.jpg', ['helvetica', 'helvetica'], ['white', 'white'], [0.55, 0.55], [(76, 38), (45, 62)])
+averagefan
+('https://lh3.googleusercontent.com/-8G09SoqgeY0/X2TkU5EJZCI/AAAAAAAAdz0/I7_ztuji0aUPh0sV7EoWGHO-0_TE6AE8QCK8BGAsYHg/s512/2020-09-18.png', ['helvetica', 'caladeabold'], ['black', 'black'], [0.5, 0.55], [(23, 11), (75, 10)])
+spiderfist
+('https://i.redd.it/aqu26rp3gqv11.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], ['1.00', '1.00'], [(35, 14), (30, 80)])
+dogestand
+('https://media.discordapp.net/attachments/719288819169624105/758736923820163133/o07129q8cp551.webp?width=575&height=575', ['helveticabold', 'helveticabold'], ['black', 'black'], [0.85, 0.65], [(52, 31), (50, 75)])
+beantank
+('https://i.redd.it/r3apx6w9xf341.jpg', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'white', 'white'], [0.4, 0.75, 0.5, 0.6], [(51, 50), (22, 37), (76, 40), (51, 85)])
+scaredof
+('https://i.kym-cdn.com/photos/images/newsfeed/001/752/159/f6f.jpg', ['helveticabold', 'helveticabold'], ['black', 'black'], [0.75, 0.6], [(66, 57), (25, 9)])
+michaeledtruck
+('https://i.kym-cdn.com/photos/images/newsfeed/001/584/180/0c2.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], [0.45, 0.45], [(31, 38), (71, 52)])
+trust
+('https://preview.redd.it/dzni08l4p1c51.png?auto=webp&s=3a78732dd00f0531fac0c7430c63ac462799ae18', ['helvetica', 'helvetica'], ['white', 'white'], [0.65, 0.65], [(70, 32), (31, 61)])
+protect
+('https://i.kym-cdn.com/entries/icons/facebook/000/025/557/guard_by_wlop-d9kmnxu.jpg', ['helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'white'], [0.6, 0.6, 0.5], [(41, 52), (63, 32), (80, 84)])
+jesus
+('https://lh3.googleusercontent.com/-X53VUCsVFSA/X7say9qAWhI/AAAAAAAAeJg/U5XdlOQZdtU2AQxpKCRitRUD5kxsDUVQQCK8BGAsYHg/s0/2020-11-22.png', ['helvetica'], ['black'], ['0.5'], [(34.75, 31.5)])
+freewifi
+('https://lh3.googleusercontent.com/-Fqn_Ra3BbLs/X7x1wQ46UsI/AAAAAAAAeJs/oUCGXr0UerUarZjFZXlG8IODb0-LNUqWgCK8BGAsYHg/s0/2020-11-23.png', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(20, 13), (73, 13)])
+monster1
+('https://lh3.googleusercontent.com/-vLBnurbavYQ/X8Q6OaG2wkI/AAAAAAAAeKc/sI5L54qtDmMVlzjtSOQWKrBWdSIkO39PgCK8BGAsYHg/s0/2020-11-29.png', ['helvetica', 'helvetica'], ['white', 'white'], [0.68, 0.85], [(25, 82), (57, 23)])
+elmosniff
+('https://i.kym-cdn.com/photos/images/newsfeed/001/631/302/990.jpeg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], [0.7, 0.5, 0.5], [(49, 30), (20, 18), (80, 27.5)])
+undertaker
+('https://lh3.googleusercontent.com/-DJjWQUiST74/X950vxcnQ3I/AAAAAAAAeVY/P2ryGaDV6kYvP01imiuXkXkfXp3zvY3RgCK8BGAsYHg/s512/2020-12-19.png', ['helvetica', 'helvetica'], ['white', 'white'], [0.75, 0.65], [(38, 87), (78, 62)])
+biggerfish
+('https://lh3.googleusercontent.com/-SAxYo07HRIs/X-JXYTNZEeI/AAAAAAAAeWE/efUfckeDZ2oafJZxcj6krFxlhLAvdItOACK8BGAsYHg/s0/2020-12-22.png', ['helvetica', 'helvetica', 'helveticabold'], ['white', 'white', 'white'], [0.5, 0.75, 0.9], [(52, 8), (52, 40), (52, 80)])
+knifebreath
+('https://lh3.googleusercontent.com/-n24tMrE8Zug/X-ULjB9GNII/AAAAAAAAeWY/T5MUV9RZuBw4AX6X_wsdyH372GswkQe6QCK8BGAsYHg/s0/2020-12-24.png', ['helvetica'], ['black'], ['0.5'], [(38, 10)])
+ambulance
+('https://en.meming.world/images/en/thumb/4/40/Call_An_Ambulance_But_Not_For_Me.jpg/300px-Call_An_Ambulance_But_Not_For_Me.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white', 'white'], ['0.7', '0.7', '0.7', '0.7'], [(15, 20), (80, 40), (0, 72), (77, 73)])
+clown
+('https://i.kym-cdn.com/photos/images/newsfeed/001/563/849/d1f.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black', 'black'], ['0.60', '0.60', '0.60', '0.60'], [(33, 15), (33, 40), (33, 65), (33, 88)])
+suit
+('https://i.imgur.com/fMKPjcb.png', ['helvetica'], ['black'], ['0.6'], [(74, 7)])

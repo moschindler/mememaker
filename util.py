@@ -12,6 +12,7 @@ from bar import *
 import re
 from whitebar import *
 import struct
+import glob
 
 #########################################
 #CLASSES
@@ -269,6 +270,9 @@ def makememebpic(i1,textar):
     url = "&_&._"
     if(isUrl(i1)):
         url = i1
+    elif(i1 == "savedMeme"):
+        url = "savedMeme"
+        pass
     else:
         d = ""
         with open('picformats.txt','r') as reader:
@@ -278,11 +282,15 @@ def makememebpic(i1,textar):
                     d = "overdone"
                 if(line.strip()==i1):
                     d = "done"      #for some reason reading lines is hard ?
-    if(url=="&_&._"):
-        
+    if(url=="&_&._"):    
         return "bruh"
-    response = requests.get(url)
-    img = Image.open(BytesIO(response.content))
+    if(re.search("<",url)):
+        url = url[1:-1]
+    if(url == "savedMeme"):
+        img = Image.open("meme.jpg")
+    else:
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
     s = whitebar(img.width,textar)
     s2 = concat_v(img,s.img)
     return s2
@@ -291,6 +299,9 @@ def makememepic(i1,textar):
     url = "&_&._"
     if(isUrl(i1)):
         url = i1
+    elif(i1 == "savedMeme"):
+        url = "savedMeme"
+        pass
     else:
         d = ""
         with open('picformats.txt','r') as reader:
@@ -300,11 +311,15 @@ def makememepic(i1,textar):
                     d = "overdone"
                 if(line.strip()==i1):
                     d = "done"      #for some reason reading lines is hard ?
-    if(url=="&_&._"):
-        
+    if(url=="&_&._"): 
         return "bruh"
-    response = requests.get(url)
-    img = Image.open(BytesIO(response.content))
+    if(re.search("<",url)):
+        url = url[1:-1]
+    if(url=="savedMeme"):
+        img = Image.open("meme.jpg")
+    else:
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
     s = whitebar(img.width,textar)
     s2 = concat_v(s.img,img)
     return s2
@@ -363,6 +378,7 @@ def getrandomimgurmeme(s):
     while bob:
         infl += 1
         if(infl>50):
+            print("ran out of time")
             break
         try: 
             ranlink = ""
@@ -370,15 +386,25 @@ def getrandomimgurmeme(s):
                 rn = random.randint(0,61)
                 ranlink += alphabet[rn:rn+1]
             print(ranlink)
+            url = "https://i.imgur.com/{}.jpg".format(ranlink)
             response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
-            img = Image.open(BytesIO(response.content))
-            img.save("meme.jpg")
-            s = cutatmid(s)
-            print((s[0],s[1]))
-            memepathsetup("meme.jpg",s[0],s[1])
-            bob = False
+            img = Image.open(BytesIO(response.content)).convert("RGB")
+            if(img.size[0]==161 and img.size[1]==81):
+                pass
+                print("fuck")
+            else:
+                bob = False
+                s = cutatmid(s)
+                memesetup(url,s[0],s[1])
+            #img.save("meme.jpg")
+            #s = cutatmid(s)
+            #print((s[0],s[1]))
+            #memepathsetup("meme.jpg",s[0],s[1])
+            #print("I GOT HERE AHAHAHAHA")
         except:
             pass
+    #s = cutatmid(s)
+    #memepathsetup("meme.jpg",s[0],s[1])
 
 def getrandomimgurlink():
     infl = 0
@@ -386,7 +412,8 @@ def getrandomimgurlink():
     ranlink = ""
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     while bob:
-        if(infl>50):
+        if(infl>200):
+            print("ran out of time")
             break
         try: 
             ranlink = ""
@@ -395,9 +422,12 @@ def getrandomimgurlink():
                 ranlink += alphabet[rn:rn+1]
             response = requests.get("https://i.imgur.com/{}.jpg".format(ranlink))
             img = Image.open(BytesIO(response.content))
+            if(img.size[0]==161 and img.size[1]==81):
+                raise ValueError("fuck2")
             bob = False
         except:
             pass
+        infl += 1
     return "https://i.imgur.com/{}.jpg".format(ranlink)
 
 
@@ -441,7 +471,13 @@ def concats(ar):    #with spaces this time
 #picurl, font, color, size, loc, text
 #DISTINGUISHING: isUrl, ar of string, also string...fuck., ar of tuple, DONE
 def parseOnPicCommand(s):
-    fonts = ["helvetica"]
+    #fonts = ["helvetica"]
+    fonts = glob.glob("fonts/*.ttf")
+    fonts = [i.split("/")[-1] for i in fonts]
+    fonts = [i.split(".")[0] for i in fonts]
+    #fonts = ["helvetica"]
+    #return fonts
+    
     validfonts = ""
     for i in fonts:
         validfonts += i
@@ -605,10 +641,34 @@ def allformats(fn):
         if(line2==""):
             line2 = f.readline().strip()
         ef.append(line1)
-        u.append(line2)
+        u.append("<"+line2+">")
         if not line2:
             break
     return [ef,u]
+
+def allformats2(fn):
+    ef = []
+    u = []
+    f = open(fn,"r")
+    while True:
+        line1 = f.readline().strip()
+        if(line1==""):
+            line1 = f.readline().strip()
+        line2 = f.readline().strip()
+        if(line2==""):
+            line2 = f.readline().strip()
+        ef.append(line1)
+        u.append(line2)
+        if not line2:
+            break
+    ans = []
+    for i in range(len(ef)):
+        try:
+            ui = ast.literal_eval(u[i])
+            ans.append((ef[i],"<"+ui[0]+">",len(ui[-1])))
+        except:
+            pass
+    return str(ans)
 
 
 def parsePicCommand(s):
@@ -628,7 +688,7 @@ def parsePicCommand(s):
         return "asdflasdfsadfsfasdf"
     else:
         idd = q[1]
-        if(not (isin(idd,"picformats.txt") or isUrl(idd))):
+        if(not (isin(idd,"picformats.txt") or isUrl(idd) or (idd == "savedMeme"))):
             return "badformat"
         l = len(q[0])+len(q[1])+3+len(ss)
         try:
@@ -653,7 +713,7 @@ def parsebpicCommand(s):
         return "vid"
     else:
         idd = q[1]
-        if(not (isin(idd,"picformats.txt") or isUrl(idd))):
+        if(not (isin(idd,"picformats.txt") or isUrl(idd) or (idd == "savedMeme"))):
             return "badformat"
         l = len(q[0])+len(q[1])+3+len(ss)
         try:

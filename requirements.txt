@@ -1,0 +1,12 @@
+Pillow
+requests
+ast
+pytube
+moviepy
+struct
+discord
+pandas
+numpy
+logging
+subprocess
+

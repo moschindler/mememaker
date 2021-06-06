@@ -1,2 +1,2 @@
 300466666356080643
-('https://i.imgflip.com/2ju3gf.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(75, 25), (75, 75)])
+('https://imgur.com/CkUi8CJ.png', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['white', 'black', 'black', 'black', 'white'], [0.6, 0.5, 0.5, 0.7, 0.7], [(50, 83), (36, 60), (63, 60), (24, 10), (75, 10)])

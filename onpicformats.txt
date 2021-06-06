@@ -1,6 +1,64 @@
 brain2
-('https://i.imgflip.com/1qh5ww.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.6', '0.6'], [(24, 24), (24, 74)])
+('https://i.imgur.com/kYU1yI3.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.6', '0.6'], [(24, 24), (24, 74)])
 brain3
-('https://i.imgflip.com/2n589r.jpg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.5', '0.5', '0.5'], [(26, 17), (26, 50), (26, 83)])
+('https://i.imgur.com/PXAP0f0.jpg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.5', '0.5', '0.5'], [(26, 17), (26, 50), (26, 83)])
 drake
-('https://i.imgflip.com/2ju3gf.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(75, 25), (75, 75)])
+('https://i.imgur.com/BO9nkDN.jpg', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(75, 25), (75, 75)])
+offering
+('https://i.imgur.com/BdIacGU.jpg', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 1.0], [(63, 90), (50, 66), (34, 35)])
+monster3
+('https://i.imgur.com/xWyYTxs.jpg', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 0.75], [(73, 47), (64, 65), (33, 47)])
+pooh3
+('https://i.imgur.com/6NSUKMG.png', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], ['0.75', '0.75', '0.75'], [(72, 18), (72, 51.5), (72, 84.7)])
+pooh2
+('https://i.imgur.com/ODmDGhw.png', ['helvetica', 'helvetica'], ['black', 'black'], ['1', '1'], [(70.5, 27), (70.5, 77)])
+shy
+('https://i.imgur.com/jCVca8X.png', ['helvetica'], ['black'], ['0.50'], [(14.95, 85.95)])
+toes
+('https://i.imgur.com/TpNnUuJ.jpg', ['helvetica', 'helvetica'], ['black', 'black'], [0.5, 0.75], [(12, 38), (75, 18)])
+medal
+('https://i.imgur.com/kuSiPcW.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black', 'black'], [0.75, 0.5, 0.5, 0.5], [(16, 15), (72, 74), (59, 76), (87, 77)])
+handshake
+('https://i.imgur.com/9oSE8BS.png', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.5, 0.5, 0.75], [(32, 12), (68, 12), (48, 80)])
+carstare
+('https://i.imgur.com/jU4PnTv.jpg', ['helvetica', 'helvetica'], ['white', 'white'], [0.55, 0.55], [(76, 38), (45, 62)])
+averagefan
+('https://i.imgur.com/xIf1XPf.png', ['helvetica', 'caladeabold'], ['black', 'black'], [0.5, 0.55], [(23, 11), (75, 10)])
+spiderfist
+('https://i.imgur.com/JXFJtVk.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], ['1.00', '1.00'], [(35, 14), (30, 80)])
+beantank
+('https://i.imgur.com/czdF2ZG.jpg', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'white', 'white'], [0.4, 0.75, 0.5, 0.6], [(51, 50), (22, 37), (76, 40), (51, 85)])
+scaredof
+('https://i.imgur.com/nl5JisJ.jpg', ['helveticabold', 'helveticabold'], ['black', 'black'], [0.75, 0.6], [(66, 57), (25, 9)])
+michaeledtruck
+('https://i.imgur.com/y9HUwYl.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], [0.45, 0.45], [(31, 38), (71, 52)])
+trust
+('https://i.imgur.com/k41nRKc.png', ['helvetica', 'helvetica'], ['white', 'white'], [0.65, 0.65], [(70, 32), (31, 61)])
+protect
+('https://i.imgur.com/pvZRA0g.jpg', ['helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'white'], [0.6, 0.6, 0.5], [(41, 52), (63, 32), (80, 84)])
+jesus
+('https://i.imgur.com/ywGsGog.png', ['helvetica'], ['black'], ['0.5'], [(34.75, 31.5)])
+freewifi
+('https://i.imgur.com/GFd2X2F.png', ['helvetica', 'helvetica'], ['black', 'black'], ['0.5', '0.5'], [(20, 13), (73, 13)])
+monster1
+('https://i.imgur.com/kb7zFLc.png', ['helvetica', 'helvetica'], ['white', 'white'], [0.68, 0.85], [(25, 82), (57, 23)])
+elmosniff
+('https://i.imgur.com/RJoVCbH.jpg', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], [0.7, 0.5, 0.5], [(49, 30), (20, 18), (80, 27.5)])
+undertaker
+('https://i.imgur.com/TztCKwJ.png', ['helvetica', 'helvetica'], ['white', 'white'], [0.75, 0.65], [(38, 87), (78, 62)])
+biggerfish
+('https://i.imgur.com/JtrhUAj.png', ['helvetica', 'helvetica', 'helveticabold'], ['white', 'white', 'white'], [0.5, 0.75, 0.9], [(52, 8), (52, 40), (52, 80)])
+knifebreath
+('https://i.imgur.com/cDtxFSJ.png', ['helvetica'], ['black'], ['0.5'], [(38, 10)])
+ambulance
+('https://i.imgur.com/HLB5EYe.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white', 'white'], ['0.7', '0.7', '0.7', '0.7'], [(15, 20), (80, 40), (0, 72), (77, 73)])
+clown
+('https://i.imgur.com/QTFVypj.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black', 'black'], ['0.60', '0.60', '0.60', '0.60'], [(33, 15), (33, 40), (33, 65), (33, 88)])
+suit
+('https://i.imgur.com/D0BLu1R.jpg', ['helvetica'], ['black'], ['0.6'], [(75, 7)])
+sully
+('https://y.yarn.co/5897bc03-1b93-4a6c-b3f0-09d48157cf96_screenshot.jpg', ['helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'white'], [0.85, 0.6, 0.5], [(62, 83), (48, 32), (18, 63)])
+ff7
+('https://i.imgflip.com/2uxvdu.jpg', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['black', 'black', 'white', 'white'], [0.85, 0.85, 0.5, 0.5], [(47, 23), (60, 55), (45, 75), (76, 73)])
+crossroads
+('https://imgur.com/CkUi8CJ.png', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['black', 'black', 'black', 'black', 'white'], [0.6, 0.5, 0.5, 0.7, 0.7], [(50, 83), (36, 60), (63, 60), (24, 9), (75, 9)])

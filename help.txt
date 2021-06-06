@@ -3,7 +3,9 @@ The first thing that I'll say is that you can escape links with <>.
 So if you're tired of that Akshay nude preview appearing when you do ?m pic imgur.com/nude ["penis"],
 you can do ?m pic <imgur.com/nude> ["penis"] and it'll fix that. Same with videos.
 
-
+-----------------------------
+The first general note I have is that you can attach "-del" to the end of any message and this bot will delete it for you.
+-----------------------------
 PICTURE MEMES, that is, a white bar with text over a picture
 SYNTAXES:
 ?m pic [link to picture] [text array]
@@ -19,7 +21,7 @@ SYNTAXES:
 ?m video [format name] [start second] [end second] [text array]
 The start second and end second are the start and end of the youtube video clip.
 EXAMPLE:
-?m video dQw4w9WgXcQ 5 10 ["sex"]
+?m video dQw4w9WgXcQ 5 10 ["witty caption"]
 ?m video kakyoin 37 53 ["when akshay realizes people eat meat"]
 -----------------------------
 BPIC, BVID:
@@ -33,23 +35,26 @@ It's highly recommended to use ?m gridlines [pic url] first to help you know whe
 Now you can put text on pictures! Like you see in most memes today.
 SYNTAX:
 ?m onpic [pic url] [font/font array] [color/color array] [size/size array] [location array] [array of array of text]
-?m onpic [format] [array of text arrays]
+?m onpic [format] [optional size array] [array of text arrays]
 
 Actually, the six inputs in the first one can be sent in ANY ORDER!
-You can remember this by: "Please fuck cock sucker Louis Armstrong."
-Or, um, "Please fuck/suck cock, Louisia!" ~Akhil
-Got it? Picture font size color location array of text. Actually, maybe text instead of array would've been better: Please fuck/suck this cock, Louisia? But then we don't know who's saying it.
-Hmmm. Paul, Schindler, Louis, Tamil, jCock, Fuck eric yin?
+You can remember this by: ...I don't know. Pretend I said a clever acronym here. 
+Got it? Picture font size color location array of text.
 
 EXAMPLE:
-?m onpic blah.com/pic ["helvetica","arial"] red 0.5 [(20,50),(60,50)] [["me"],["me when A*","enters the room"]]
+?m onpic blah.com/pic ["helvetica","arial"] red 0.5 [(20,50),(60,50)] [["me"],["my mom when she finds","the poop sock"]]
+?m onpic monster2 [["Trump"],["Biden"],["Drake"]]
+?m onpic monster2 [0.5,0.5,1.5] [["Trump"],["Biden"],["Drake"]]
+In these last two examples, since the format "monster2" has already been created, you can either just provide the text array (and use the default sizes), or provide both a size array and a text array.
+
 MORE EXPLANATION:
+
 If only one input is given for any of font, color, size, it's assumed that's the input for ~all~ of them.
 Each location corresponds to where a block of text goes. A location is given by the % x from the left and % y from the top.
 So halfway across and all the way down is (50,100). Bottom right corner is (100,100).
 Each sub-array of text is put at one location, and each thing in that array gets its own line.
-With locations [(20,50),(60,80)] and text array array [["me"],["me when A*","enters the room"]],
-"me" is centered at 20% across 50% down, and the two lines "me when A*/enters the room" are centered at 60% across 80% down.
+With locations [(20,50),(60,80)] and text array array [["me"],["my mom when she finds","the poop sock"]],
+"me" is centered at 20% across 50% down, and the two lines "my mom when she finds/the poop sock" are centered at 60% across 80% down.
 HOW DO I KNOW WHERE GOOD PERCENTS ARE? OR FONT SIZES?
 use ?m gridlines [pic url]
 
@@ -64,13 +69,20 @@ Lets you put impact font text with borders on an image like you see in old and/o
 SYNTAX:
 ?m [bt or btpic] [pic url or format] [array of text which will be the lines of top text] [array of text, bottom text]
 -------------------------------
+BOTTOM TEXT, BUT ON A RANDOM PIC:
+This one seems to be popular!
+Just ?m btpic random [array of text which will be lines of top text] [array of text, bottom text]
+EXAMPLE:
+?m btpic random ["bruh"] ["moment"]
+
+Uh, no guarantees you'll get something SFW.
+-------------------------------
 BOTTOM TEXT VIDEO:
 Like bottom text pic, but with a video!!!
 SYNTAX:
 ?m [btvid or btvideo] [youtube id or format] [start time in s] [end time in s] [array of top text] [array of bottom text]
-
 -------------------------------
-combine uses a separate command 'cause it's a little bitch.
+combine uses a separate command 'cause it's an ass.
 COMBINE: 
 Literally just combine n video clips, possibly the same.
 SYNTAX:
