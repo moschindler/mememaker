@@ -2,7 +2,6 @@ Pillow
 requests
 pytube
 moviepy
-struct
 discord
 pandas
 numpy
