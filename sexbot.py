@@ -405,7 +405,7 @@ async def f(ctx):       #add format
                 else:
                     addformatpic(s[2],s[3])
                     await ctx.message.channel.send("nice")
-
+'''
 @bot.command(pass_context=True)
 async def combine(ctx):
     await ctx.message.channel.send("yeah, so something something AWS is too slow to run ffmpeg on so video stuff doesn't work. Sorry!")
@@ -483,17 +483,17 @@ async def combine(ctx):
 @bot.command(pass_context=True)
 async def gifpic(ctx,base,over,corner1,corner2):
     s = ctx.message.content
-
+'''
 
 
 ###########################################
 
-
+'''
 @bot.command(pass_context=True)
 async def send(ctx):
     await ctx.message.channel.send("test")
     await ctx.message.channel.send(file=File("./white.png"))
-
+'''
 @bot.command(pass_context=True)
 async def restart(ctx):
     await ctx.send("Restarting...")
