@@ -22,7 +22,11 @@ import random
 nmes = 0
 
 #server id = 695865535954550866
+
 token = os.popen("cat token.txt | head -1").read().strip()
+print(token)
+token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxTNHA.ka_zMIR-cftLDfsHeV5UnZj6HIg"
+
 print(token)
 
 bot = commands.Bot(command_prefix='?') #define command decorator
