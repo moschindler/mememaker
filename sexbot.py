@@ -74,22 +74,22 @@ async def on_message(message):
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     if((len(message.content)<70 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
         nmes += 1
-        print("HEY i just met you "+str(nmes))
-        if(nmes%10==0):
-            print(message.content)
+        #print("HEY i just met you "+str(nmes))
+        #if(nmes%10==0):
+        #    print(message.content)
         #if(nmes%10==0):
         #    print(nmes)
         bob = True
     if ((nmes % 350 == 50) and bob):
         print("we boutta send a random meme o_o")
-        url = getrandomimgurlink()
-        s = cutatmid(message.content)
-        print(url)
-        memesetup(url,s[0],s[1])
-        embed = discord.Embed(title=url)
-        embed.set_image(url="attachment://meme.jpg")
+        #url = getrandomimgurlink()
+        #s = cutatmid(message.content)
+        #print(url)
+        #memesetup(url,s[0],s[1])
+        #embed = discord.Embed(title=url)
+        #embed.set_image(url="attachment://meme.jpg")
         #getrandomimgurmeme(message.content)
-        await message.channel.send(file=File("./meme.jpg"),embed=embed)
+        #await message.channel.send(file=File("./meme.jpg"),embed=embed)
             
     #print(message)
     await bot.process_commands(message)
