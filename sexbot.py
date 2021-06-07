@@ -130,7 +130,7 @@ async def m(ctx):
     if(nextguy in ["btvid","btvideo","vid","video","bvid","bvideo"]):
         await ctx.message.channel.send("yeah, so anything involving videos/gifs is currently offline until i can obtain something to run this on that doesn't run ffmpeg at the speed of a potato. Sorry!")
     elif(s=="?m help" or s=="?meme help"):
-        await ctx.message.channel.send("Type ?m onpic shelp for onpic specific help")
+        await ctx.message.channel.send("Type ?m onpic help for onpic specific help")
         await ctx.message.channel.send("Type ?m shelp for quick help.")
         await ctx.message.channel.send(file=File("./help.txt"))
     elif(s=="?m onpic help"):
