@@ -74,7 +74,7 @@ async def on_message(message):
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     if((len(message.content)<70 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
         nmes += 1
-        #print("HEY i just met you")
+        print("HEY i just met you")
         #if(nmes%10==0):
         #    print(nmes)
         bob = True
