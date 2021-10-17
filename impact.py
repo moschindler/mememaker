@@ -22,7 +22,7 @@ class impact:
     def __init__(self,imgpaths,textar,top="top",fontname="impact"):
         self.text = textar
         self.text = [i.upper() for i in self.text]
-        self.img = Image.open(imgpaths).convert("RGB")
+        self.img = Image.open(imgpaths).convert("RGBA")
         self.font = "fonts/{}.ttf".format(fontname)
         self.w,self.h = self.img.width,self.img.height
         print((self.w,self.h))
@@ -109,6 +109,7 @@ def vidtextsetup(yid,ss,ee,tt,bt):
     clip = VideoFileClip(yid+".mp4")
     img = Image.open("transparent.png")
     ww,hh=clip.w,clip.h
+    print("where am i?")
     #print(ww)
     img = img.resize((clip.w,clip.h))
     img.save("transparent.png")
@@ -123,7 +124,7 @@ def vidtextsetup(yid,ss,ee,tt,bt):
     clip.close()
     os.system('ffmpeg -y -hide_banner -loglevel panic -i {} -i temp.png -filter_complex "[1]lut=a=val*1.0[a];[0][a]overlay=0:0" -c:v libx264 meme.mp4'.format(yid+".mp4"))
     #os.system("ffmpeg -y -hide_banner -loglevel panic -i {} -i {} -filter_complex 'overlay' meme.mp4".format(yid+"tp.mp4",yid+".mp4"))
-    os.system("rm -f temp.png")
+    #os.system("rm -f temp.png")
 #imgpaths textar top .out(fn)
 
 def memesetup(url,tt,bt):

@@ -211,8 +211,8 @@ async def m(ctx):
                 await ctx.message.channel.send(file=File("./meme.gif"))
             else:
                 await ctx.message.channel.send(file=File("./meme.mp4"))
-            os.system("rm -f ./meme.mp4")
-            os.system("rm -f ./meme.gif")
+            #os.system("rm -f ./meme.mp4")
+            #os.system("rm -f ./meme.gif")
     elif(s.split(" ")[1]=="onpic"):                                             #ONPIC
         print("Hi")
         #TIME FOR THE FUCKING NIGHTMARE

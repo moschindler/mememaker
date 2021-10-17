@@ -11,19 +11,18 @@ from whitebar import *
 
 def ydl(yid):
     link = "https://www.youtube.com/watch?v="+yid
-    yt = YouTube(link).streams.filter(file_extension='mp4').first().download(filename=yid)
+    yt = YouTube(link).streams.filter(file_extension='mp4').first().download(filename=yid+".mp4")
 
 def getclip(yid,s,e):
     os.system("rm "+yid+"*")
     os.system("rm -f meme.mp4")
     link = "https://www.youtube.com/watch?v="+yid
     yt = ""
-    yt = YouTube(link).streams.filter(file_extension='mp4').first().download(filename=yid)
-    com = "ffmpeg -y -hide_banner -loglevel panic -ss "+str(s)+" -i "+yid+".mp4 -vcodec copy -acodec copy -to "+str(float(e)-float(s))+" -vsync 0 -vf mpdecimate "+yid+"2.mp4"
+    yt = YouTube(link).streams.filter(file_extension='mp4').first().download(filename=yid+".mp4")
+    com = "ffmpeg -y -hide_banner -loglevel panic -ss "+str(s)+" -i "+yid+".mp4 -ss "+str(s)+" -t "+str(float(e)-float(s))+" -c:v libx265 -crf 30 -vsync 0 -vf mpdecimate "+yid+"2.mp4"
     print(com)
     os.system(com)  #HOLY FUCK IT FINALLY WORKED FINALLY WOO
     os.system("mv "+yid+"2.mp4 "+yid+".mp4")
-
 def vidmemesetup(yid,s,e,textar):
     getclip(yid,s,e)
     clip = VideoFileClip(yid+".mp4")
