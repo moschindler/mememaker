@@ -128,7 +128,8 @@ async def m(ctx):
     print(s)
     z = parsePicCommand(s)
     nextguy = s.split(" ")[1]
-    if(nextguy in ["btvid","btvideo","vid","video","bvid","bvideo"]):
+    #if(nextguy in ["btvid","btvideo","vid","video","bvid","bvideo"]):
+    if(False):
         await ctx.message.channel.send("yeah, so anything involving videos/gifs is currently offline until i can obtain something to run this on that doesn't run ffmpeg at the speed of a potato. Sorry!")
     elif(s=="?m help" or s=="?meme help"):
         await ctx.message.channel.send("Type ?m onpic help for onpic specific help")
