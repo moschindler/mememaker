@@ -124,7 +124,7 @@ def vidtextsetup(yid,ss,ee,tt,bt):
     clip.close()
     os.system('ffmpeg -y -hide_banner -loglevel panic -i {} -i temp.png -filter_complex "[1]lut=a=val*1.0[a];[0][a]overlay=0:0" -c:v libx264 meme.mp4'.format(yid+".mp4"))
     #os.system("ffmpeg -y -hide_banner -loglevel panic -i {} -i {} -filter_complex 'overlay' meme.mp4".format(yid+"tp.mp4",yid+".mp4"))
-    #os.system("rm -f temp.png")
+    os.system("rm -f temp.png")
 #imgpaths textar top .out(fn)
 
 def memesetup(url,tt,bt):
