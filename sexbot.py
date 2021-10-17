@@ -172,7 +172,7 @@ async def m(ctx):
                 mcid = 899142586520981534
                 serverid = ctx.message.guild.id
                 channelid = ctx.message.channel.id
-                if((serverid != msid) or (channelid != mcid)):
+                if((serverid != csid) or (channelid == fhid)):
                     url = getrandomimgurlink()
                     print(url)
                     memesetup(url,tt,bt)
