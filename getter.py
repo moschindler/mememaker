@@ -35,7 +35,6 @@ def vidmemesetup(yid,s,e,textar):
     
     clip.close()
     
-
 def vidmememake(yid):
     print("Hi")
     print("ffmpeg -y -hide_banner -loglevel panic -i "+yid+"wb.mp4 -i"+yid+".mp4 -filter_complex vstack=inputs=2 -vsync 0 -vf mpdecimate "+yid+"2.mp4")
