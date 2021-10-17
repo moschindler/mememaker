@@ -22,7 +22,7 @@ class impact:
     def __init__(self,imgpaths,textar,top="top",fontname="impact"):
         self.text = textar
         self.text = [i.upper() for i in self.text]
-        self.img = Image.open(imgpaths).convert("RGBA")
+        self.img = Image.open(imgpaths).convert("RGB")
         self.font = "fonts/{}.ttf".format(fontname)
         self.w,self.h = self.img.width,self.img.height
         print((self.w,self.h))
