@@ -22,12 +22,13 @@ import random
 nmes = 0
 
 #server id = 695865535954550866
-
+csid = 704390957692485692
+fhid = 756676519551827988
 token = os.popen("cat token.txt | head -1").read().strip()
 print(token)
 token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxTNHA.ka_zMIR-cftLDfsHeV5UnZj6HIg"
 
-print(token)
+#print(token)
 
 bot = commands.Bot(command_prefix='?') #define command decorator
 
@@ -160,18 +161,25 @@ async def m(ctx):
             z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
             bob = True
         except:
-            await ctx.message.channel.send("Something's wrong with your text arrays, amigo.")
+            await ctx.message.channel.send("Something's wrong with your text arrays...")
         if(bob):
             url = z[2]
             tt,bt = bt,tt
             if(url=="random"):
-                url = getrandomimgurlink()
-                print(url)
-                memesetup(url,tt,bt)
-                embed = discord.Embed(title=url)
-                #file = discord.File("./meme.jpg")
-                embed.set_image(url="attachment://meme.jpg")
-                await ctx.message.channel.send(file=File("meme.jpg"),embed=embed)
+                csid = 704390957692485692
+                fhid = 756676519551827988
+                msid = 770183351800692766
+                mcid = 899142586520981534
+                serverid = ctx.message.guild.id
+                channelid = ctx.message.channel.id
+                if((serverid != msid) or (channelid != mcid)):
+                    url = getrandomimgurlink()
+                    print(url)
+                    memesetup(url,tt,bt)
+                    embed = discord.Embed(title=url)
+                    #file = discord.File("./meme.jpg")
+                    embed.set_image(url="attachment://meme.jpg")
+                    await ctx.message.channel.send(file=File("meme.jpg"),embed=embed)
             else:
                 memesetup(getvidofformat(url,'picformats.txt'),tt,bt)
                 await ctx.message.channel.send(file=File("./meme.jpg"))
