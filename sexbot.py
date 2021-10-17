@@ -207,7 +207,7 @@ async def m(ctx):
             tt,bt = bt,tt
             vidtextsetup(getvidofformat(yid,"vidformats.txt"),int(s),int(e),tt,bt)
             if("-gif" in opts):
-                os.system("ffmpeg -i meme.mp4 meme.gif")
+                os.system("ffmpeg -hide_banner -loglevel panic -y -i meme.mp4 meme.gif")
                 await ctx.message.channel.send(file=File("./meme.gif"))
             else:
                 await ctx.message.channel.send(file=File("./meme.mp4"))
