@@ -546,7 +546,19 @@ async def py(ctx):
     command = ctx.message.content[4:]
     chezid = 98613661299388416
     doit = True
-    if(("bitcoin" in command) or ("import os" in command) or ("import subprocess" in command) or ("os." in command) or ("subprocess." in command) or ("pip" in command)):
+    #################
+    #check all the modules and stuff
+    banned_modules = ['os','subprocess']
+    subprocess.run("cp run.py run2.py",shell=True)
+    subprocess.run("echo 'print(modules.keys())' >run2.py",shell=True)
+    out = subprocess.Popen("python run.py &",stdout=subprocess.PIPE,stderr=subprocess.STDOUT,shell=True,close_fds=True)
+    stdout = out.stdout.read()
+    for k in banned_modules:
+        if "'"+k in stdout:
+            await ctx.send("no.")
+            doit = False
+            break
+    if(("bitcoin" in command) or ("import os" in command) or ("import subprocess" in command) or ("os." in command) or ("subprocess." in command) or ("pip" in command) or (";" in command)):
         await ctx.send("no.")
         doit = False
     elif ctx.message.author.id==chezid:
@@ -568,7 +580,7 @@ async def py(ctx):
 
 @bot.command(pass_context=True)
 async def clear(ctx):
-    subprocess.run('echo "" >run.py',shell=True)
+    subprocess.run('echo "from sys import modules" >run.py',shell=True)
 
 
 bot.run(token)
