@@ -534,7 +534,7 @@ async def natural(ctx):
 @bot.command(pass_context=True)
 async def bash(ctx):
     myid = 300466666356080643
-    if(message.author.id==myid):
+    if(ctx.message.author.id==myid):
         command = ctx.message.content[6:]
         out = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,shell=True)
         stdout = out.stdout.read()
