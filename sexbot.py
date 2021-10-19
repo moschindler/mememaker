@@ -560,7 +560,7 @@ async def py(ctx):
 
 @bot.command(pass_context=True)
 async def clear(ctx):
-    subprocess.run('echo "" >run.py')
+    subprocess.run('echo "" >run.py',shell=True)
 
 
 bot.run(token)
