@@ -544,9 +544,16 @@ async def bash(ctx):
 @bot.command(pass_context=True)
 async def py(ctx):
     command = ctx.message.content[4:]
-    if(("import os" in command) or ("import subprocess" in command)):
+    chezid = 98613661299388416
+    doit = True
+    if(("import os" in command) or ("import subprocess" in command) or ("os." in command) or ("subprocess." in command) or ("pip" in command):
         await ctx.send("no.")
-    else:
+        doit = False
+    elif ctx.message.author.id==chezid:
+        if "import" in command:
+            await ctx.send("no.")
+            doit = False
+    if(doit):
         f = open('run.py','a')
         f.write(command+"\n")
         f.close()
