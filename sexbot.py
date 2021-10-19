@@ -528,7 +528,19 @@ async def kill(ctx):
 @bot.command(pass_context=True)
 async def natural(ctx):
     await ctx.message.channel.send("$natural in 5 hours send blah blah blah to #general")
-#KEY FOR FLOWALGO
+#############################################
+
+#bash
+@bot.command(pass_context=True)
+async def bash(ctx):
+    myid = 300466666356080643
+    if(message.author.id==myid):
+        command = ctx.message.content[6:]
+        out = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,shell=True)
+        stdout = out.stdout.read()
+        if(not stdout.decode('ascii') == ""):
+            await ctx.send(stdout.decode('ascii'))
+
 
 bot.run(token)
 
