@@ -558,7 +558,7 @@ async def py(ctx):
             await ctx.send(stdout.decode('ascii'))
         subprocess.run('sed -i "s/^print/#print/g" run.py',shell=True)
 
-@bot.command(pass_context=True):
+@bot.command(pass_context=True)
 async def clear(ctx):
     subprocess.run('echo "" >run.py')
 
