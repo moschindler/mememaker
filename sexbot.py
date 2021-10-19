@@ -550,7 +550,7 @@ async def py(ctx):
         await ctx.send("no.")
         doit = False
     elif ctx.message.author.id==chezid:
-        if "import" in command:
+        if "import" in command or "eval" in command:
             await ctx.send("no.")
             doit = False
     if(doit):
