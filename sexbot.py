@@ -546,7 +546,7 @@ async def py(ctx):
     command = ctx.message.content[4:]
     chezid = 98613661299388416
     doit = True
-    if(("import os" in command) or ("import subprocess" in command) or ("os." in command) or ("subprocess." in command) or ("pip" in command):
+    if(("bitcoin" in command) or ("import os" in command) or ("import subprocess" in command) or ("os." in command) or ("subprocess." in command) or ("pip" in command):
         await ctx.send("no.")
         doit = False
     elif ctx.message.author.id==chezid:
