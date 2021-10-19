@@ -541,6 +541,27 @@ async def bash(ctx):
         if(not stdout.decode('ascii') == ""):
             await ctx.send(stdout.decode('ascii'))
 
+@bot.command(pass_context=True)
+async def py(ctx):
+    command = ctx.message.content[4:]
+    if(("import os" in command) or ("import subprocess" in command)):
+        await ctx.send("no.")
+    else:
+        f = open('run.py','a')
+        f.write(command+"\n")
+        f.close()
+        subprocess.run("sed -i 's/`//g' run.py",shell=True)
+
+        out = subprocess.Popen("python run.py &",stdout=subprocess.PIPE,stderr=subprocess.STDOUT,shell=True,close_fds=True)
+        stdout = out.stdout.read()
+        if(not stdout.decode('ascii')==""):
+            await ctx.send(stdout.decode('ascii'))
+        subprocess.run('sed -i "s/^print/#print/g" run.py',shell=True)
+
+@bot.command()
+async def clear():
+    subprocess.run('echo "" >run.py')
+
 
 bot.run(token)
 
