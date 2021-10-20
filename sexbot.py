@@ -541,6 +541,59 @@ async def bash(ctx):
         if(not stdout.decode('ascii') == ""):
             await ctx.send(stdout.decode('ascii'))
 
+############################################
+
+#quotes
+@bot.command(pass_context=True)
+async def q(ctx,name, *args):
+    #name, quote.
+    if name.lower() == "help":
+        await ctx.send("usage: ?q <name> or ?q <random>")
+        await ctx.send('to add a quote, ?q add <name> "<quote>"')
+    elif name.lower() == "add":
+        f = open("quotes.txt","a")
+        rest = list(args)   #is it already a list? who knows.
+        if len(rest)<2:
+            pass
+        elif len(rest)>2:
+            await ctx.send("make sure to include quotation marks around your quote and escape all other quotation marks")
+            pass
+        else:
+            author = ""
+            quote = ""
+            if len(rest[1])>len(rest[0]):
+                author = rest[0]
+                quote = rest[1]
+            else:
+                author = rest[1]
+                quote = rest[0]
+            f.write(author.lower())
+            f.write("\n")
+            f.write(quote)
+            f.write("\n")
+    else:
+        f = open("quotes.txt","r")
+        allquotes = []
+        while True:
+            line1 = f.readline()
+            line2 = f.readline()
+            if (line2=="") or (line1==""):
+                break
+            allquotes.append((line1.strip(),line2.strip()))
+            #print(allquotes)
+        if name.lower()=="random":
+            qa = random.choice(allquotes)
+            print(qa)
+            quote = qa[1]
+            author = qa[0]
+            await ctx.send('"{}" ~{}'.format(quote,author))
+        else:
+            
+            allquotes = [i for i in allquotes if i[0]==name]
+            qa = random.choice(allquotes)
+            quote = qa[1]
+            author = qa[0]
+            await ctx.send(quote)
 
 
 bot.run(token)
