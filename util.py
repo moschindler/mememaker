@@ -474,10 +474,14 @@ def parseOnPicCommand(s):
     #fonts = ["helvetica"]
     fonts = glob.glob("fonts/*.ttf")
     fonts = [i.split("/")[-1] for i in fonts]
+    if not 'helvetica' in fonts:
+        fonts = [i.split("\\")[-1] for i in fonts]
     fonts = [i.split(".")[0] for i in fonts]
     #fonts = ["helvetica"]
     #return fonts
+    print(fonts)
     
+    print("HIIIIIIIIIIIIIIII")
     validfonts = ""
     for i in fonts:
         validfonts += i
@@ -546,6 +550,7 @@ def parseOnPicCommand(s):
     if(sizear==""):
         return "font sizes. It should either be: A single number or an array of numbers."
     if(fontar==""):
+        print("hi")
         return "fonts. It should either be: A single font or an array of fonts. Valid fonts are: "+validfonts
     if(colorar==""):
         return "colors. It should either be: A single color or an array of colors. Valid color format is either #XXXXX (0-F) or the name of a color."

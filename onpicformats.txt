@@ -62,3 +62,11 @@ ff7
 ('https://i.imgflip.com/2uxvdu.jpg', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['black', 'black', 'white', 'white'], [0.85, 0.85, 0.5, 0.5], [(47, 23), (60, 55), (45, 75), (76, 73)])
 crossroads
 ('https://imgur.com/CkUi8CJ.png', ['helveticabold', 'helveticabold', 'helveticabold', 'helveticabold', 'helveticabold'], ['black', 'black', 'black', 'black', 'white'], [0.6, 0.5, 0.5, 0.7, 0.7], [(50, 83), (36, 60), (63, 60), (24, 9), (75, 9)])
+tracing
+('https://i.imgur.com/ote4PrY.jpg', ['helveticabold', 'helveticabold', 'helveticabold'], ['white', 'white', 'black'], [0.75, 0.75, 1.0], [(95, 20), (43, 30), (55, 75)])
+krabscock
+('https://i.imgur.com/i9j0haV.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], [0.85, 0.6], [(30, 30), (80, 75)])
+assassination3
+('https://i.imgur.com/RsmZW8m.jpg', ['helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white'], [0.7, 0.5, 0.5], [(22, 70), (55, 63), (83, 62)])
+assassination4
+('https://i.imgur.com/7Qmzkbg.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white', 'white'], [0.65, 0.55, 0.55, 1.0], [(23, 38), (55, 33), (83, 32), (80, 88)])
