@@ -1,2 +1,2 @@
 300466666356080643
-('https://i.imgur.com/7Qmzkbg.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white', 'white'], [0.65, 0.55, 0.55, 1.0], [(23, 38), (55, 33), (83, 32), (80, 88)])
+('https://i.imgur.com/QdY99AS.jpg', ['helvetica', 'helvetica'], ['black', 'black'], [0.5, 0.5], [(76, 5), (72, 62)])
