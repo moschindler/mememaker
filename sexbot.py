@@ -18,8 +18,6 @@ from getter import *
 from impact import *
 import asyncio
 import random
-import psycopg2
-import config
 
 
 nmes = 0
