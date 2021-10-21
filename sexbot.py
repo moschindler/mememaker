@@ -593,7 +593,7 @@ async def q2(ctx,name,*args):
 
             insert_query = """ INSERT INTO quotes (NAME, QUOTE) VALUES (%s,%s)"""
             record = (author,quote)
-            cursor.execute(insert_query,record))
+            cursor.execute(insert_query,record)
 
 #quotes
 @bot.command(pass_context=True)
