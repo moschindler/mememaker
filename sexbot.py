@@ -18,6 +18,9 @@ from getter import *
 from impact import *
 import asyncio
 import random
+import psycopg2
+import config
+
 
 nmes = 0
 
@@ -28,9 +31,23 @@ token = os.popen("cat token.txt | head -1").read().strip()
 print(token)
 token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxTNHA.ka_zMIR-cftLDfsHeV5UnZj6HIg"
 
+pgkey = "postgres://zczeipodtgdtvg:9c969824e4a97fae0b471a9c167c697c6c553ca3f37a642d4c2eeb60f348a450@ec2-54-163-254-204.compute-1.amazonaws.com:5432/d4f7cj4c61me5s"
+
 #print(token)
 
+DATABASE_URL = os.environ['DATABASE_URL'] = pgkey
+conn = psycopg2.connect(DATABASE_URL,sslmode='require')
+cur = conn.cursor()
+
 bot = commands.Bot(command_prefix='?') #define command decorator
+
+######################################
+
+
+#######################
+
+
+
 
 @bot.command(pass_context=True) #define the first command and set prefix to '!'
 async def testt(ctx):
@@ -542,6 +559,41 @@ async def bash(ctx):
             await ctx.send(stdout.decode('ascii'))
 
 ############################################
+#postgres
+@bot.command(pass_context=True)
+async def maketable(ctx):
+    command = ("""CREATE TABLE quotes (
+        person VARCHAR(255) NOT NULL,
+        quote TEXT NOT NULL
+        )""")
+    cur.execute(command)
+    print("hi")
+
+@bot.command(pass_context=True)
+async def q2(ctx,name,*args):
+    if name.lower() == "help":
+        await ctx.send("usage: ?q <name> or ?q <random>")
+        await ctx.send('to add a quote, ?q add <name> "<quote>"')
+    elif name.lower() == "add":
+        rest = list(args)   
+        if len(rest)<2:
+            pass
+        elif len(rest)>2:
+            await ctx.send("make sure to include quotation marks around your quote and escape all other quotation marks")
+            pass
+        else:
+            author = ""
+            quote = ""
+            if len(rest[1])>len(rest[0]):
+                author = rest[0]
+                quote = rest[1]
+            else:
+                author = rest[1]
+                quote = rest[0]
+
+            insert_query = """ INSERT INTO quotes (NAME, QUOTE) VALUES (%s,%s)"""
+            record = (author,quote)
+            cursor.execute(insert_query,record))
 
 #quotes
 @bot.command(pass_context=True)

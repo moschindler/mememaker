@@ -5,4 +5,5 @@ youtube_dl
 moviepy
 discord
 pandas
-
+psycopg2
+config
