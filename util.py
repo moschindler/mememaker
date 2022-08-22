@@ -13,7 +13,28 @@ import re
 from whitebar import *
 import struct
 import glob
+from datetime import datetime, timedelta
+import calendar
 
+##########
+#random utility
+def opp(s):
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    ans = ""
+    for i in alpha:
+        if not i in s:
+            ans += i
+    return ans
+
+def all_links(arr1,arr2):
+    ans = []
+    for i in range(len(arr1)):
+        l1 = arr1[i]
+        l2 = arr2[i]
+        ends = opp(l2)
+        for j in ends:
+            ans.append(l1+j)
+    return ans
 #########################################
 #CLASSES
 
@@ -84,7 +105,7 @@ class transbar(bar):    #TRANSPARENT BAR: for when you want to write text ON an 
 #IMAGE MANIPULATION (WRITING, ETC)
 def gs(fontname,fontsize,text):
     return ImageFont.truetype(fontname,fontsize).getsize(text)
-def textonpic(picpath,font,color,size,loc,text):
+def textonpic(picpath,font,color,size,loc,text,single=False):
     #font in <whatever>, color in color or color..
     #FONT SHOULD CONTAIN TTF ALREADY
     #loc in percentages (across, down)
@@ -99,20 +120,24 @@ def textonpic(picpath,font,color,size,loc,text):
     colors = {
         "black":"#000000","red":"#FF0000","green":"#00FF00","blue":"#0000FF",
         "white":"#FFFFFF","pink":"#FF00FF","yellow":"#FFFF00","cyan":"#00FFFF",
-        "grey":"#666666","gray":"#666666","purple":"#BB00FF","orange":"#FF7700"
+        "grey":"#666666","gray":"#666666","purple":"#BB00FF","orange":"#FF7700",
+        "darkgray":"#414141","darkgrey":"#414141"
     }
     try:
         int(color[1:])
     except:
         color = colors.get(color)
     color = color[1:]
-    color = struct.unpack('BBB',bytes.fromhex(color))
-    
+    try:
+        color = struct.unpack('BBB',bytes.fromhex(color))
+    except:
+        color = (61,61,61)
     
     ##########################
     #width and font size and shit
     img = Image.open(picpath)
-    w,h = img.width,img.height
+    im = img.load()
+    w,h = img.size
     start = (w*int(loc[0])/100,h*int(loc[1])/100)
     fz = float(size)*w/20*2
     fz = int(fz)
@@ -121,7 +146,10 @@ def textonpic(picpath,font,color,size,loc,text):
     draw = ImageDraw.Draw(img)
     ##########################
     #finding the height of the text and the width of each row
-    nrows = len(text)
+    if single:
+        nrows = 1
+    else:
+        nrows = len(text)
     rowwidths = [gs(fontname,fz,i)[0] for i in text]
     textheight = fz+40/25*fz*(nrows-1)  #shrug
     truestarts = []
@@ -143,11 +171,16 @@ def textonpic(picpath,font,color,size,loc,text):
         truestarts.append((start[0]-rowwidths[i]/2,start[1]+inx*hg-fz/2))   #here's hoping
         #PRAYER emojis
     #pic text loc font color size
-    for i in range(len(text)):
-        draw.text(truestarts[i],text[i],color,font=font)
+    if single:
+        for i in range(nrows):
+            draw.text(truestarts[i],text,color,font=font)
+    else:
+        for i in range(nrows):
+            draw.text(truestarts[i],text[i],color,font=font)
     img.save(picpath)
     #img.show()
     #pic text loc font color size
+
 
 def ith(f,i):
     if(type(f) is list):
@@ -172,6 +205,14 @@ def alltextonpic(imgurl,font, color, size, locar, textar):
     #textar = ast.literal_eval(textar)
     for i in range(len(locar)): 
         textonpic("meme.jpg",ttf(ith(font,i)),ith(color,i),ith(size,i),locar[i],textar[i])
+
+def alltextonscreening(font,color,size,locar,textar):
+    #picurl, font, color, size, loc, text
+    #isinstance,list
+    #locar = ast.literal_eval(locar)
+    #textar = ast.literal_eval(textar)
+    for i in range(len(locar)): 
+        textonpic("screening.png",ttf(ith(font,i)),ith(color,i),ith(size,i),locar[i],textar[i])
 
 def gridlines(imgurl):
     if(imgurl[0] =="<"):
@@ -202,13 +243,34 @@ def gridlines(imgurl):
 '''
 textars = '[["when","you"],["ar","e","sex"]]'
 locar = '[(50,30),(10,10)]'
-color = "black"
-font = "helvetica"
-size = "1"
-alltextonpic("https://i.pinimg.com/originals/6e/1e/28/6e1e287da53614647b9b33cc480c7a26.jpg",font,color,size,locar,textars)
 
 '''
 #textonpic("meme2.jpg",["hygh","hygh","huhghghgh","hsdhagdasg","asdhglasdlghasdg"],(0.5,0.3),"helvetica.ttf","black",1)
+
+def screening(name,sid):
+    now = datetime.now()-timedelta(hours=6)
+    cday = now.day
+    cmon = calendar.month_name[now.month]
+    cyear = now.year
+    cweek = calendar.day_name[now.weekday()]
+    tom = datetime.today()+timedelta(days=1)-timedelta(hours=6)
+    tday = tom.day
+    tmon = calendar.month_name[tom.month]
+    tyear = tom.year
+    tweek = calendar.day_name[tom.weekday()]
+    
+    toptext = "{}, {} {}, {}".format(cweek,cmon,cday,cyear)
+    bottomtext = "{}, {} {}, {}".format(tweek,tmon,tday,tyear)
+    #12.5,81.9
+    font = "sourcesans"
+    color = "darkgray"
+    locar = [(52,12),(52,18),(52,62.5),(52,67.5),(52,81),(52,87)]
+    size = 0.5
+    textar = [[toptext],["07:30 AM"],[name],[sid],[bottomtext],["07:30 AM"]]
+    #textar = [[{}],[{}]].format(toptext,bottomtext)
+    alltextonscreening(font,color,size,locar,textar)
+    #textonpic("/home/ec2-user/walterbot1/screening.png","sourcesans.ttf","black",0.45,(29,11),toptext,single=True)
+    #textonpic("/home/ec2-user/walterbot1/screening.png","sourcesans-light.ttf","black",0.5,(29,80),bottomtext,single=True)
 
 #################################################
 #DISCORD, UH, BOT, STUFF
@@ -324,8 +386,11 @@ def makememepic(i1,textar):
     s2 = concat_v(s.img,img)
     return s2
 
-def getvidofformat(fo,fn):   #format, file name
+def getvidofformat(fo,fn,asList=False):   #format, file name
+    #if asList: returns [format name,True] if in formats, [yid,False] if not.
+    #if not asList: returns format name if in formats, yid if not.
     f = open(fn,"r")
+    
     while True:
         line1 = f.readline()
         if(line1 == ""):
@@ -334,12 +399,19 @@ def getvidofformat(fo,fn):   #format, file name
         if(line2 == ""):
             line2 = f.readline()
         if(line1.strip()==fo):
+            if asList:
+                return [line2.strip(),True]
             return line2.strip()
         if(line2.strip()==fo):
+            if asList:
+                return [line2.strip(),True]
             return line2.strip()
         if not line2:
             break
+    if asList:
+        return [fo,False]
     return fo
+
 
 def isUrl(s):   #only urls contain . and /, right?!
     if(re.search("\.",s) and re.search("\/",s)):
@@ -772,5 +844,6 @@ if __name__ == "__main__":
     draw.text((0,0), "blah blah blah", (128,128,128))
     img.show()
     '''
-    print(getrandomimgurlink())
+    screening("Moses Schindler","schindler")
+    #print(getrandomimgurlink())
     pass

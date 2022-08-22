@@ -76,3 +76,15 @@ birds
 ('https://imgur.com/QxmKvqi.jpg', ['helveticabold', 'helveticabold', 'helveticabold'], ['black', 'black', 'black'], [0.75, 0.75, 0.65], [(42, 76), (64, 54), (55, 15)])
 whowants
 ('https://i.imgur.com/QdY99AS.jpg', ['helvetica', 'helvetica'], ['black', 'black'], [0.5, 0.5], [(76, 5), (72, 62)])
+atlas
+('https://i.imgur.com/QmgEghq.jpg', ['helveticabold', 'helveticabold'], ['white', 'white'], [0.75, 1], [(50, 50), (50, 15)])
+watchthis
+('https://i.imgur.com/w2EXdaG.png', ['helvetica'], ['black'], ['0.5'], [(73, 10)])
+greedy
+('https://i.imgur.com/D6kJ7Xp.png', ['helvetica', 'helvetica', 'helvetica'], ['black', 'black', 'black'], [0.6, 0.7, 0.5], [(50, 10), (85, 10), (35, 48)])
+babeplease
+('https://i.imgur.com/8eZjWRG.jpg', ['helvetica', 'helvetica'], ['black', 'black'], [0.5, 0.55], [(25, 22), (76, 17)])
+theydontknow
+('https://i.imgur.com/2hylxvd.jpg', ['helvetica'], ['black'], ['0.6'], [(50, 12)])
+whokilled
+('https://imgur.com/TthlwIo.jpg', ['helvetica', 'helvetica', 'helvetica', 'helvetica'], ['white', 'white', 'white', 'white'], [0.85, 0.65, 0.85, 0.65], [(65, 25), (25, 30), (65, 75), (25, 80)])

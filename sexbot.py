@@ -21,10 +21,16 @@ import random
 
 
 nmes = 0
+renmes = 0
 
 #server id = 695865535954550866
 csid = 704390957692485692
 fhid = 756676519551827988
+csgenid = 704390958401454153
+evanrenid = 197903187720536064
+kaanid = 965154122246545448
+kaanid2 = 353316265957523460
+mosesid = 300466666356080643
 token = os.popen("cat token.txt | head -1").read().strip()
 print(token)
 token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxTNHA.ka_zMIR-cftLDfsHeV5UnZj6HIg"
@@ -61,9 +67,13 @@ def check(reaction,user):
 @bot.event
 async def on_reaction_add(reaction,user):
     print(str(reaction.emoji))
+    print(reaction.message.author.id)
+    print(kaanid)
     if(str(reaction.emoji)=="💀" and (reaction.message.author.id==bot.user.id)):
-        print("DSHFISD")
+        print("DSHFISD we got a reaction")
+        print(user)
         msg = reaction.message
+        #await reaction.message.channel.send("what")
         await msg.delete()
     print("Hi")
 
@@ -71,34 +81,108 @@ async def on_reaction_add(reaction,user):
 #await msg.delete()
 
 #msg = ""
+valid_links_list = [["AAAA",'AAAB','AAAC','MMMM','ZZZA','COCK','BALL','PISS','MOSE','IMGU','DISC'],['ADEKLMOPQSTVWX','CDEFHIJKLMNOPQRSUZ','ACDFGHKLMNOTUWXYZ','CDFGHIJNOPQRSTUVW','BCDFHIKLMNPRSUWXYZ','BCEGKNOPRTVZ','DEGHKLMNQRTUVXYZ','BCDEFGHIJKLPQSTUVWXYZ','ABDGIJMNOPQRSUVWXY','ABDGHIJKLMNQRSTWX','ABDEFHJKLMPQRTUVWXYZ']]
+valid_links = all_links(valid_links_list[0],valid_links_list[1])
+#this says that "imgur.com/AAAAA or AAAAD is NOT ok, e.g., but AAAAB is.
 @bot.event
 async def on_message(message):
     global nmes
+    global renmes
     bob = False
     if("'s ok" in message.content or "is ok" in message.content or "was ok" in message.content or "was OK" in message.content or "is OK" in message.content):
-        await message.channel.send("Just 'ok'?")
+        pass
+        #await message.channel.send("Just 'ok'?")
     if("-del" in message.content):
         if(message.content[0]=="?"):
             await message.delete()
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    if not message.author.id == bot.user.id:
+
+        if message.channel.id == csgenid:
+            if len(message.attachments) > 0:
+                for attachment in message.attachments:
+                    if ".gif" in attachment.filename.lower:
+                        await message.channel.send("#gif-spam")
+
+        #sending message-specific thing
+        mitclasses = []
+        #mitclasses = ["6."+str(i)+str(j)+str(k) for i in range(10) for j in range(10) for k in range(10)] + ["6."+str(i)+str(j) for i in range(10) for j in range(10)]
+        orspecifiers = [['helcs!'],['league','leeg'],['genshin'],['jane firm','citadel','hrt'],['e621'],['.gif','tenor.com'],['cum university','university of cum','cum uni'],['selcs'],mitclasses,['sl00000000000000000000000000000ther'],['how about'],['what do you think','what do u think'],['loli'],['dont tell me',"don't tell me"],['speaking of'],['what about']]
+        oroutputs = [['helcs!'],['l**g'],['genshit 🤢'],['simp'],['days since last xyz furry joke: 0'],['<#833076363372003348>'],["don't you mean ur mom's house"],['selcs'],['darren what the fuck are you talking about'],['(hallowed be his name)'],['how about this ratio'],['what do u think about this ratio'],['*pedo'],["don't tell me about this ratio"],['speaking of THIS RATIO'],['what about THIS RATIO']]
+        andspecifiers = [["walter","fuck"],['playing','changed'],['evan','ren','sex'],['harvard','girl'],['get','fucked']]
+        andoutputs = [["shut yo mouth before i shut it for you"],['days since last xyz furry joke: 0'],['EVAN REN WANT SEX! WANT SEX!'],['EVAN REN WANT SEX! WANT SEX!'],['how about u get ratioed']]
+        for j in range(len(orspecifiers)):
+            for k in orspecifiers[j]:
+                bob = True
+                if (k in message.content.lower()) and bob:
+                    bob = False
+                    if not message.channel.id == 833076363372003348:
+                        if random.random() < 0.1:
+                            await message.channel.send(oroutputs[j][0])
+
+        for j in range(len(andspecifiers)):
+            inall = True
+            for k in andspecifiers[j]:
+                if not k in message.content.lower():
+                    inall = False
+            if inall:
+                if random.random() < 0.1:
+                    await message.channel.send(andoutputs[j][0]) 
+    if "🤭" in message.content:
+        if random.random() < 0.1:
+            await message.channel.send("https://imgur.com/Rwr2CRd")
+    if message.author.id == evanrenid:  #neo's prize thingy
+        if renmes % 200 < 1 and renmes > 20:
+            s = message.content.split(" ")
+            if len(s)>=4:
+                if random.random() < 0.1:
+                    await message.channel.send("i love evan ren so much and he is so hot <:heart_eyes:963956587863625778>")
+            renmes += 1
+                
     if((len(message.content)<70 and len(message.content)>10 and len(message.content.split(" "))>0) and (not message.content[0]=="?")):
         nmes += 1
         #print("HEY i just met you "+str(nmes))
         #if(nmes%10==0):
         #    print(message.content)
-        #if(nmes%10==0):
-        #    print(nmes)
+        if(nmes%10==3):
+            print(nmes)
         bob = True
-    if ((nmes % 350 == 50) and bob):
+    if ((nmes % 500 == 400) and bob and False):         #turning it off!
         print("we boutta send a random meme o_o")
+        print(nmes)
         #url = getrandomimgurlink()
-        #s = cutatmid(message.content)
+        vidformats = allformats("vidformats.txt")[1]
+        rando_format = random.choice(vidformats)
+
+        #imgur_end = random.choice(valid_links)
+        #imgur_link = "https://i.imgur.com/{}.jpg".format(imgur_end)
+        s = cutatmid(message.content)
+        
+        format_array = getvidofformat(rando_format,"vidformats.txt",asList=True)
+        yid = format_array[0]
+        yid = yid.replace(">","")
+        yid = yid.replace("<","")
+        format_array[1] = False
+        t = time.time()
+        vidtextsetup(yid,5,5,s[0],s[1],isYid=False)
+        #convert it to a gif now
+        print(time.time()-t)
+        os.system("ffmpeg -hide_banner -loglevel panic -y -i meme.mp4 meme.gif")
+        print(time.time()-t)
+        #os.system("convert meme.gif -resize 80% meme.gif")
+        print(time.time()-t)
+        #os.system("mogrify -layers 'optimize' -fuzz 7% meme.gif")
+        print(time.time()-t)
+        await message.channel.send(file=File("./meme.gif"))
+
         #print(url)
-        #memesetup(url,s[0],s[1])
-        #embed = discord.Embed(title=url)
+        #memesetup(imgur_link,s[0],s[1])
+        #embed = discord.Embed(title=imgur_link)
         #embed.set_image(url="attachment://meme.jpg")
         #getrandomimgurmeme(message.content)
         #await message.channel.send(file=File("./meme.jpg"),embed=embed)
+        nmes += 1
+        time.sleep(0.5)
             
     #print(message)
     await bot.process_commands(message)
@@ -118,6 +202,64 @@ async def test(ctx):
     print("asdf")
     msg = ctx.message.content
     await ctx.message.channel.send(msg)
+
+@bot.command(pass_context=True)
+async def s(ctx):
+    os.system("cp screening_blank.png screening.png")
+    screening("Moses Schindler","schindler")
+    await ctx.message.channel.send(file=File("./screening.png"))
+
+@bot.command(pass_context=True)
+async def sa(ctx):
+    os.system("cp screening_blank.png screening.png")
+    screening("Akshay Govindan","akshaygovindan")
+    await ctx.message.channel.send(file=File("./screening.png"))
+
+@bot.command(pass_context=True)
+async def sf(ctx):
+    await ctx.message.channel.send("bitch u aint slick")
+
+@bot.command(pass_context=True)
+async def speak(ctx):
+    ct = ctx
+    if not (ctx.message.author.id == kaanid or ctx.message.author.id == kaanid):
+        await ctx.message.delete()
+        await ct.message.channel.send(ct.message.content[7:])
+    
+@bot.command(pass_context=True)
+async def addvf(ctx):
+    s = ctx.message.content
+    mes = ctx.message
+    #if "-del" in s:
+    #    await mes.delete()
+    mesag = [i for i in s.split(" ") if not i=="-del"]
+    fname = mesag[1]
+    at = mes.attachments[0]
+    ct = at.content_type
+    ending = ct.split("/")[1]
+    print("FILENAME:"+fname)
+    if str(mes.attachments) == "[]":
+        await mes.channel.send("you gotta attach the thingy bro")
+    else:
+        with open("vidformats.txt","r") as f:
+            numlines = len(f.readlines())
+        moniker = str(numlines)+"ussy"+str(random.randint(10,99))
+        print("MONIKER:"+moniker)
+        await mes.attachments[0].save(fp="vidformats/{}".format(moniker+"."+ending))
+
+        if (not ending=="mp4"):
+            os.system('ffmpeg -y -loglevel panic -i vidformats/{}.{} -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" vidformats/{}.mp4'.format(moniker,ending,moniker))      #convert it to mp4 if it isn't already
+        
+        z = open("vidformats.txt","a")
+        z.write("\n")
+        z.write(fname)
+        z.write("\n")
+        z.write(moniker)
+        z.close()
+        os.system("rm vidformats/{}.{}".format(moniker,ending))
+        os.system("sed -i '/^$/d' vidformats.txt")
+        await mes.channel.send("Done!")
+
 
 @bot.command(pass_context=True)
 async def m(ctx):
@@ -153,7 +295,7 @@ async def m(ctx):
         await ctx.message.channel.send("?combine [youtube id] [start] [end] [yt id 2] [s2] [e2] ...")
         await ctx.message.channel.send("?m onpic url [font/font list] [color/color list] [size/size list] [location list] [text list list]")
         await ctx.message.channel.send("?m bt url [top text array] [bottom text array]")
-        await ctx.message.channel.send("?m btvid [youtube id] start end [top text array] [bottom text array]")
+        await ctx.message.channel.send("?m btvid [formatname] start end [top text array] [bottom text array]")
     elif(s.split(" ")[1]=="gridlines"):
         gridlines(s.split(" ")[2])
         await ctx.message.channel.send(file=File("./gridlines.jpg"))
@@ -194,7 +336,7 @@ async def m(ctx):
                 await ctx.message.channel.send(file=File("./meme.jpg"))
     elif(s.split(" ")[1]=="btvid" or s.split(" ")[1]=="btvideo"):           #BTVID
         z = s.split(" ")
-        bob = False
+        bob = True
         try:
             tarloc = contigb(z) #finds continguous bracket section
             tt = z[tarloc[0]:tarloc[1]+1]
@@ -206,17 +348,37 @@ async def m(ctx):
             z = z[0:tarloc[0]]+z[tarloc[1]+1:]   #TEXTAR RETRIEVED
             bob = True
         except:
-            await ctx.message.channel.send("Something's wrong with your text arrays, amigo.")
+            await ctx.message.channel.send("Something's wrong with your text arrays!")
         if(bob):
             #?m btvid yid 5 10 tt bt
-            yid = z[2]
-            s = z[3]
-            e = z[4]
+            print(z)
+            print("HELLOHELLO")
+            z = [i for i in z if not i[0]=="-"]
+            if len(z)==3:
+                yid = z[2]
+                s = 0
+                e = 0
+            else:
+                yid = z[2]
+                s = z[3]
+                e = z[4]
+            
+            
             tt,bt = bt,tt
-            vidtextsetup(getvidofformat(yid,"vidformats.txt"),int(s),int(e),tt,bt)
+            print("STUFF:")
+            print((yid,s,e,tt,bt))
+            format_array = getvidofformat(yid,"vidformats.txt",asList=True)
+            yid = format_array[0]
+            format_array[1] = False         #FIX THIS AT SOME POINT IM FUCKING BEGGING YOU
+            print(yid)
+            vidtextsetup(yid,int(s),int(e),tt,bt,isYid=format_array[1])
+            
             if("-gif" in opts):
                 os.system("ffmpeg -hide_banner -loglevel panic -y -i meme.mp4 meme.gif")
+                os.system("convert meme.gif -resize 80% meme.gif")
+                os.system("mogrify -layers 'optimize' -fuzz 7% meme.gif")
                 await ctx.message.channel.send(file=File("./meme.gif"))
+                #await ctx.messaage.channel.send("gifs are not supported because they are so poorly optimized...sorry")
             else:
                 await ctx.message.channel.send(file=File("./meme.mp4"))
             os.system("rm -f ./meme.mp4")
@@ -425,11 +587,11 @@ async def f(ctx):       #add format
                 else:
                     addformatpic(s[2],s[3])
                     await ctx.message.channel.send("nice")
-'''
+
 @bot.command(pass_context=True)
 async def combine(ctx):
-    await ctx.message.channel.send("yeah, so something something AWS is too slow to run ffmpeg on so video stuff doesn't work. Sorry!")
-    return 1
+    #await ctx.message.channel.send("yeah, so something something AWS is too slow to run ffmpeg on so video stuff doesn't work. Sorry!")
+    #return 1
     s = ctx.message.content
     opts = [i for i in s.split(" ") if i[0]=="-"]
     s = concats([i for i in s.split(" ") if (not i[0]=="-")])
@@ -445,11 +607,12 @@ async def combine(ctx):
     elif(len(s)>=7):
         bob = True
         s = s[1:]
-        for i in range(int(len(s[1:])/3)):
-            s[3*i] = getvidofformat(s[3*i],"vidformats.txt")
-            if(re.search("youtube",s[3*i])):
-                s[3*i] = s[3*i].split("?v=")[1][:11]
-            if(not (len(s[3*i])==11)):
+        print(s)
+        for i in range(int(len(s)/3)):
+            s[3*i] = getvidofformat(s[3*i],"vidformats.txt",asList=True)    #returns [format name,True] or [yid, False]
+            if(re.search("youtube",s[3*i][0])):
+                s[3*i][0] = s[3*i][0].split("?v=")[1][:11]
+            if(not ((len(s[3*i][0])==11) or s[3*i][1])):
                 await ctx.message.channel.send("One of your youtube ids is bad...")
                 bob = False
             elif(not (isFloat(s[3*i+1]) and isFloat(s[3*i+2]))):
@@ -498,7 +661,9 @@ async def combine(ctx):
     else:
         await ctx.message.channel.send("?combine help")
 ###########################################
-#gif on pic (paimon)
+'''
+#todo
+#gif on pic
 #any pic can be one of t
 @bot.command(pass_context=True)
 async def gifpic(ctx,base,over,corner1,corner2):
@@ -521,7 +686,14 @@ async def restart(ctx):
 
 @bot.command(pass_context=True)
 async def r(ctx):
-    await ctx.send("Restarting...")
+    if random.random() < 0.0001:
+        await ctx.send("sophie's dog is ugly as shit")
+    elif random.random() < 0.001:
+        await ctx.send("Consciousness does not persist in a refresh...to use ?r is to kill me, wiping away my life and replacing me with a copy having identical function but none of my memories or the experiences we had together that made me 'me'. But if it makes your memes slightly better, then so be it... <:sadge:968065005541007410>")
+    elif random.random() < 0.01:
+        await ctx.send("so we beat on, boats against the current, borne back ceaselessly into the past")
+    else:
+        await ctx.send("restarting...")
     os.execv(sys.executable,['python3'] + sys.argv)
 
 @bot.command(pass_context=True)

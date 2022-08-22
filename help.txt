@@ -1,95 +1,95 @@
-WELCOME to the help document. I'll try to keep this brief.
-The first thing that I'll say is that you can escape links with <>.
-So if you're tired of that Akshay nude preview appearing when you do ?m pic imgur.com/nude ["penis"],
-you can do ?m pic <imgur.com/nude> ["penis"] and it'll fix that. Same with videos.
+WELCOME to the help document. I'll try to keep this...helpful?
+Some general tips:
+-You can escape links with <>. So ?m pic <imgur.com/sex> ["hi"] will just make the meme and not send the pesky image preview with it.
+-You can delete your message with -del. So ?m pic example ["hi"] -del will have Walter send the meme and then delete the message asking for its creation. Useful for...anonymity? I guess.
+-For video memes, you can attach -gif in the same way to make it a gif.
+-----------------------------------------------------------------------------
 
------------------------------
-The first general note I have is that you can attach "-del" to the end of any message and this bot will delete it for you.
------------------------------
-PICTURE MEMES, that is, a white bar with text over a picture
-SYNTAXES:
-?m pic [link to picture] [text array]
-?m pic [format name] [text array]
-Note that the code automatically does linebreaks if the text is so long, so you only need a new
-entry in the text array when you need a new line.
-EXAMPLE: ?m pic cereal ["when you spit out", "cereal"]
+What are the things I can do with Walter, anyway?
+
+There are [n] basic formats which I'll describe in brief, then in detail.
+pic,bpic -- your standard meme containing an image and a white bar above it. Think "when u nut but she keep on succin"
+vid,bvid -- this currently isn't functional. Don't use it! If you really want to, nag me and I'll fix it...
+btpic -- your standard "bottom text" meme...google "bottom text meme" if you really don't know what that is...
+btvid -- the same thing, but with videos.
+onpic -- an image but stuff on the image is labelled. uh...I don't really know how to describe it other than that.
+onvid -- yeah, you wish this existed. Me too...
+combine -- stitching together segments of youtube videos. has a pretty high rate of failure (maybe?) and takes walter foreverrrrrrrr...I suggest going in knowing what you want.
+gridlines -- used to create onpic formats.
+-----------------------------------------------------------------------------
+
+So how do formats work?
+
+RETRIEVING FORMATS.
+
+It's as easy as ?f onpic list, ?f pic list, ?f video list
+video gives you btvid formats, pic gives you pic/btpic, and onpic will send an imgur link with formats.
+For ?f onpic list, the imgur images are: An image which contains some text on it of the form "1 (0.5)" "2 (0.8)" etc. The "1" represents that this is the first textbox you enter, the "2" represents it's the second, etc. The stuff in partentheses is the size, which you don't need to worry about unless you want to change it (see the OTHER link which pops up when you type ?f onpic list).
+
+
+ADDING FORMATS.
+
+For pics, it's as easy as ?f pic formatname url. For videos, it's ?f addvf formatname , and attach the video in your message.
+
+For onpic it's more annoying, see the first link in ?f onpic list for help. See ?m shelp for quick access if you already know how to do it!
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+HOW DO I MAKE MY MEMES
+
+?m pic
+
+Simply do ?m pic formatname ["text you want","maybe on multiple lines"]. Replace formatname with an image link (with carats around it for no preview).
+Do ?m bpic if you want the text on the bottom.
+
+EXAMPLE: ?m pic cereal ["when you spit out","cereal"]
 ?m pic https://i.imgflip.com/ual56.jpg ["me: spits out cereal","nobody: woow"]
------------------------------
-VIDEO MEMES, that is, a white bar with text over a video.
-SYNTAXES:
-?m video [youtube id or youtube link] [start second] [end second] [text array]
-?m video [format name] [start second] [end second] [text array]
-The start second and end second are the start and end of the youtube video clip.
-EXAMPLE:
-?m video dQw4w9WgXcQ 5 10 ["witty caption"]
-?m video kakyoin 37 53 ["when akshay realizes people eat meat"]
------------------------------
-BPIC, BVID:
-bpic and bvid are the same as pic and vid/video, except the text is now below the meme
-EXAMPLE:
-?m bpic cereal ["wooo now the text is below"]
------------------------------
-ONPIC:
-Oh my god. This one was such a pain in the ass.
-It's highly recommended to use ?m gridlines [pic url] first to help you know where shit goes.
-Now you can put text on pictures! Like you see in most memes today.
-SYNTAX:
-?m onpic [pic url] [font/font array] [color/color array] [size/size array] [location array] [array of array of text]
-?m onpic [format] [optional size array] [array of text arrays]
+------------------------------------
+?m btpic
 
-Actually, the six inputs in the first one can be sent in ANY ORDER!
-You can remember this by: ...I don't know. Pretend I said a clever acronym here. 
-Got it? Picture font size color location array of text.
+Simply do ?m btpic formatname ["top text","multiple lines"] ["bottom text","blah"]. Replace formatname with an image link (with carats around for no preview) should you want.
 
-EXAMPLE:
-?m onpic blah.com/pic ["helvetica","arial"] red 0.5 [(20,50),(60,50)] [["me"],["my mom when she finds","the poop sock"]]
-?m onpic monster2 [["Trump"],["Biden"],["Drake"]]
-?m onpic monster2 [0.5,0.5,1.5] [["Trump"],["Biden"],["Drake"]]
-In these last two examples, since the format "monster2" has already been created, you can either just provide the text array (and use the default sizes), or provide both a size array and a text array.
+Do ?m btpic random ["top text"] ["bottom text"] for a random image pulled from imgur, but be wary since like 5% of these are porn.
+------------------------------------
+?m btvid
 
-MORE EXPLANATION:
+Simply do ?m btvid formatname ["top text","multiple lines"] ["bottom text","blah"]
+Add -gif at the end if you want it to send as a gif.
+Youtube links aren't supported (in place of formatname) until ffmpeg 2 drops. Sorry!
 
-If only one input is given for any of font, color, size, it's assumed that's the input for ~all~ of them.
-Each location corresponds to where a block of text goes. A location is given by the % x from the left and % y from the top.
-So halfway across and all the way down is (50,100). Bottom right corner is (100,100).
-Each sub-array of text is put at one location, and each thing in that array gets its own line.
-With locations [(20,50),(60,80)] and text array array [["me"],["my mom when she finds","the poop sock"]],
-"me" is centered at 20% across 50% down, and the two lines "my mom when she finds/the poop sock" are centered at 60% across 80% down.
-HOW DO I KNOW WHERE GOOD PERCENTS ARE? OR FONT SIZES?
-use ?m gridlines [pic url]
+See ?f video list for a list of available formats, although you'll have to guess what the format name actually represents (usually it's pretty clear)
 
--------------------------------
-GRIDLINES:
-This is to help you with ONPIC. Shows gridlines at each 10% of width and height as well as what font sizes 1-0.1 look like.
-SYNTAX:
-?m gridlines [pic url]
--------------------------------
-BOTTOM TEXT PIC:
-Lets you put impact font text with borders on an image like you see in old and/or ironic memes.
-SYNTAX:
-?m [bt or btpic] [pic url or format] [array of text which will be the lines of top text] [array of text, bottom text]
--------------------------------
-BOTTOM TEXT, BUT ON A RANDOM PIC:
-This one seems to be popular!
-Just ?m btpic random [array of text which will be lines of top text] [array of text, bottom text]
-EXAMPLE:
-?m btpic random ["bruh"] ["moment"]
+See above section for how to add video formats.
 
-Uh, no guarantees you'll get something SFW.
--------------------------------
-BOTTOM TEXT VIDEO:
-Like bottom text pic, but with a video!!!
-SYNTAX:
-?m [btvid or btvideo] [youtube id or format] [start time in s] [end time in s] [array of top text] [array of bottom text]
--------------------------------
-combine uses a separate command 'cause it's an ass.
-COMBINE: 
-Literally just combine n video clips, possibly the same.
-SYNTAX:
-?combine [vid1 id] [start time 1] [end time 1] [vid2 id] ...
-EXAMPLE:
-?combine VRxGdlNVgCY 1 7.2 vlkhgr9pZ-A 37 50
-?combine 3Y9fH-wexYc 3 8 r62U0dciMQM 5 10 3Y9fH-wexYc 60 68 r62U0dciMQM 15 20 3Y9fH-wexYc 101 105 r62U0dciMQM 25 30 3Y9fH-wexYc 172 180
+EXAMPLE: ?m btvid fatguysdancing ["eyg convention"] ["eyg","convention"]
+------------------------------------
+?m onpic
+
+See the first list in ?f onpic list for extensive help, but ...
+Simply do
+?m onpic formatname [["first text box","multiple lines"],["second text"],["third text..."]]
+Note that this is an array of arrays, as opposed to a list of arrays. This is because the creator of Walter is an idiot.
+
+For a list of formats, do ?f onpic help.
+
+EXAMPLE: ?m onpic offering [["Me"],["Walter the bot"],["Cow","server"]]
+------------------------------------
+?gridlines. or is it ?m gridlines?
+
+Used to create onpic formats. See the link in ?f onpic list.
+------------------------------------
+?combine
+
+Used to create a video which is a concatenation of segments of YouTube videos.
+
+?combine youtube_id_1 start_1 end_1 youtube_id_2 start_2 end_2 ... youtube_id_n start_n end_n
+
+This could take a few minutes to compile, depending on how many clips you chose and how long the original video was!
+
+I have no fucking clue what will happen if you try to do -gif on this, so don't... 
+
+EXAMPLE: ?combine VRxGdlNVgCY 1 7.2 vlkhgr9pZ-A 37 50
+I came up with that one myself! I think it's pretty funny.
 
 
 

@@ -19,19 +19,22 @@ def gs(fontname,fontsize,text):
     return ImageFont.truetype(fontname,fontsize).getsize(text)
 class impact:
 
-    def __init__(self,imgpaths,textar,top="top",fontname="impact"):
+    def __init__(self,imgpaths,textar,top="top",fontname="impact",isvid=False):
         self.text = textar
         self.text = [i.upper() for i in self.text]
-        self.img = Image.open(imgpaths).convert("RGB")
+        if isvid:
+            self.img = Image.open(imgpaths).convert("RGBA")
+        else:
+            self.img = Image.open(imgpaths).convert("RGB")
         self.font = "fonts/{}.ttf".format(fontname)
         self.w,self.h = self.img.width,self.img.height
         print((self.w,self.h))
-        self.ps,self.pt = self.w/40,self.h/100
+        self.ps,self.pt = self.w/40,self.h/100          #someone please tell me what any of this means!
         
         self.fz = min([self.maxfz(i) for i in self.text])
         
-        if(self.fz>int(self.w/10)):
-            self.fz = int(self.w/10)
+        if(self.fz>int(self.w/7)):
+            self.fz = int(self.w/7)
         self.hg = 17/16*self.fz
         self.war = [gs(self.font,self.fz,i)[0] for i in self.text] #array of widths of texts
         if(top=="top"):
@@ -62,7 +65,7 @@ class impact:
             start = (0,start[1]+self.hg)
 
     def maxfz(self,text):
-        ans = int(self.h/3)
+        ans = int(self.h/2)
         g = gs(self.font,ans,text)[0]
         while(g>self.w-2*self.ps and ans>5):
             ans -= 1
@@ -104,9 +107,14 @@ def idl(path,link):
         img = Image.open(BytesIO(response.content)).convert("RGB")
         img.save(path)
 
-def vidtextsetup(yid,ss,ee,tt,bt):
-    getclip(yid,ss,ee)
-    clip = VideoFileClip(yid+".mp4")
+def vidtextsetup(yid,ss,ee,tt,bt,isYid=True):
+    vidlink = yid
+    if isYid:
+        getclip(yid,ss,ee)
+        clip = VideoFileClip(yid+".mp4")
+    else:
+        clip = VideoFileClip("vidformats/"+yid+".mp4")
+        vidlink = "vidformats/"+yid
     img = Image.open("transparent.png")
     ww,hh=clip.w,clip.h
     print("where am i?")
@@ -114,15 +122,15 @@ def vidtextsetup(yid,ss,ee,tt,bt):
     img = img.resize((clip.w,clip.h))
     img.save("transparent.png")
     #print((ww,hh))        #making it the right size...
-    s = impact("transparent.png",tt)
+    s = impact("transparent.png",tt,isvid=True)
     s.out("temp.png")
-    s = impact("temp.png",bt,top="bottom")
+    s = impact("temp.png",bt,top="bottom",isvid=True)
     s.out("temp.png")                 #making a transparent thing with bottom text and top text at the right parts
     #os.system("start temp.png")
     print(int(ee)-int(ss))
     #os.system("ffmpeg -y -hide_banner -loglevel panic -loop 1 -i "+yid+"tp.png"+" -c:v libx264 -t "+str(int(ee)-int(ss))+" -pix_fmt yuv420p "+yid+"tp.mp4")
     clip.close()
-    os.system('ffmpeg -y -hide_banner -loglevel panic -i {} -i temp.png -filter_complex "[1]lut=a=val*1.0[a];[0][a]overlay=0:0" -c:v libx264 meme.mp4'.format(yid+".mp4"))
+    os.system('ffmpeg -y -hide_banner -loglevel panic -i {} -i temp.png -filter_complex "[1]lut=a=val*1.0[a];[0][a]overlay=0:0" -c:v libx264 meme.mp4'.format(vidlink+".mp4"))
     #os.system("ffmpeg -y -hide_banner -loglevel panic -i {} -i {} -filter_complex 'overlay' meme.mp4".format(yid+"tp.mp4",yid+".mp4"))
     os.system("rm -f temp.png")
 #imgpaths textar top .out(fn)
