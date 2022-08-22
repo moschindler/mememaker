@@ -35,8 +35,10 @@ token = os.popen("cat token.txt | head -1").read().strip()
 print(token)
 token = "NzE4Njg0NjAxNjEwMDEwNzM0.XxTNHA.ka_zMIR-cftLDfsHeV5UnZj6HIg"
 
-
-bot = commands.Bot(command_prefix='?') #define command decorator
+#intents = discord.Intents.default()
+intents = discord.Intents.all()
+intents.members = True
+bot = commands.Bot(command_prefix='?',intents=intents) #define command decorator
 
 ######################################
 
